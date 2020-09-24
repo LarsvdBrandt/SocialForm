@@ -1,13 +1,14 @@
 import React from "react";
 import socialformlogo from "../images/socialformlogo.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
-      <a className="navbar-title" href="http://localhost:3003/">
+      <Link to="/" className="navbar-title">
         <img className="navbar-Logo" src={socialformlogo} alt="Logo" />
         SocialForm
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -37,9 +38,9 @@ function Navbar() {
         </form>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
-            <a className="nav-link text-uppercase" href="login">
+            <Link to="/Login" className="nav-link text-uppercase">
               Login
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
