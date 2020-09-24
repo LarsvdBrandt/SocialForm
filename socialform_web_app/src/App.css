@@ -154,12 +154,12 @@ nav .search-container button:hover {
 }
 
 .card-image-index {
-  width: 300px;
+  width: 260px;
   height: auto;
 }
 
 .card-title-index {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   color: black;
 }
@@ -171,4 +171,11 @@ nav .search-container button:hover {
 
 .card-text-index {
   font-size: small;
+}
+
+.card-body-index {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 0.5rem;
 }
