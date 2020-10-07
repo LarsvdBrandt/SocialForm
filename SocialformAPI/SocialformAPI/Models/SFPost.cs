@@ -9,7 +9,7 @@ namespace SocialformAPI.Models
     public class SFPost
     {
         [Key]
-        public long Id { get; set; }
+        public long id { get; set; }
         public string Title { get; set; }
         public string ImgSrc { get; set; }
         public string Comment { get; set; }

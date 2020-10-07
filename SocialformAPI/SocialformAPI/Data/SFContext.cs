@@ -15,5 +15,12 @@ namespace SocialformAPI.Data
         }
 
         public DbSet<SFPost> SFPosts { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            
+            modelBuilder.Entity<SFPost>().ToTable("SFPost");
+        }
     }
 }

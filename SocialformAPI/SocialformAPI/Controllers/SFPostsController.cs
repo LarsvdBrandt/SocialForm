@@ -10,7 +10,7 @@ using SocialformAPI.Models;
 
 namespace SocialformAPI.Controllers
 {
-    [Route("api/SFPosts")]
+    [Route("api/[controller]")]
     [ApiController]
     public class SFPostsController : ControllerBase
     {
@@ -48,7 +48,7 @@ namespace SocialformAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSFPost(long id, SFPost sFPost)
         {
-            if (id != sFPost.Id)
+            if (id != sFPost.id)
             {
                 return BadRequest();
             }
@@ -83,7 +83,7 @@ namespace SocialformAPI.Controllers
             _context.SFPosts.Add(sFPost);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSFPost", new { id = sFPost.Id }, sFPost);
+            return CreatedAtAction("GetSFPost", new { id = sFPost.id }, sFPost);
         }
 
         // DELETE: api/SFPosts/5
@@ -104,7 +104,7 @@ namespace SocialformAPI.Controllers
 
         private bool SFPostExists(long id)
         {
-            return _context.SFPosts.Any(e => e.Id == id);
+            return _context.SFPosts.Any(e => e.id == id);
         }
     }
 }
