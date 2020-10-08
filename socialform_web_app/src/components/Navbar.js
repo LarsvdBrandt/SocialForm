@@ -42,6 +42,18 @@ function Navbar() {
               Login
             </Link>
           </li>
+
+          <li className="nav-item active">
+            <Link to="/GetRequest" className="nav-link text-uppercase">
+              Get
+            </Link>
+          </li>
+
+          <li className="nav-item active">
+            <Link to="/PostRequest" className="nav-link text-uppercase">
+              Post
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
