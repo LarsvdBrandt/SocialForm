@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import TutorialDataService from "../services/TutorialService";
 
-export default class PersonList extends React.Component {
+class PersonList extends React.Component {
   state = {
-    persons: [],
+    SFposts: [],
   };
 
   componentDidMount() {
-    fetch("https://localhost:44352/api/SFPosts")
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+    axios.get("https://localhost:44352/api/SFPosts").then((res) => {
+      console.log(res);
+      this.setState({ SFposts: res.data });
+    });
   }
-
   render() {
     return (
       <ul>
-        {this.state.persons.map((person) => (
-          <li>{person.name}</li>
+        {this.state.SFposts.map((SFpost) => (
+          <li>{SFpost.title}</li>
         ))}
       </ul>
     );
   }
 }
+export default PersonList;

@@ -31,6 +31,7 @@ namespace SocialformAPI
             services.AddDbContext<SFContext>(options =>
    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +41,8 @@ namespace SocialformAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            //note: re-enable cors when deployed.
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
