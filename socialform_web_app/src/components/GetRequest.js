@@ -1,37 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-class GetRequest extends React.Component {
-  state = {
-    SFposts: [],
-    id: "",
-  };
+function GetRequest() {
+  const [postList, setPostList] = useState([]);
 
-  componentDidMount() {
-    axios.get("https://localhost:44352/api/SFPosts").then((res) => {
-      console.log(res);
-      this.setState({ SFposts: res.data });
+  useEffect(() => {
+    axios.get("https://localhost:44352/api/SFPosts/").then((res) => {
+      const newPostList = res.data;
+      setPostList(newPostList);
+      console.log(res.data);
     });
-  }
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Person ID:
-            <input type="text" name="id" onChange={this.handleChange} />
-          </label>
-          <button type="submit">Delete</button>
-        </form>
-        <ul>
-          {this.state.SFposts.map((SFpost) => (
-            <li>
-              {SFpost.title} | met het ID {SFpost.id}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
+  }, []);
+
+  return (
+    <li>
+      <p>{postList.title}</p>
+    </li>
+  );
 }
 export default GetRequest;
