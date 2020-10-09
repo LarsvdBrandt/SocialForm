@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 
 const PostRequest = () => {
   const [post, setPost] = useState({ title: "", imgSrc: "", comment: "" });
+  const [message, setMessage] = useState("");
 
   const handleChange = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
@@ -15,6 +16,7 @@ const PostRequest = () => {
     CRUDService.create(post).then((res) => {
       console.log(res);
       console.log(res.data);
+      setMessage("Er is een post aangemaakt!");
     });
   };
   return (
@@ -22,7 +24,7 @@ const PostRequest = () => {
       <h2>Post test</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label for="title">Title</label>
+          <label for="title">Gebruiker</label>
           <input
             className="form-control"
             placeholder="Title"
@@ -56,6 +58,10 @@ const PostRequest = () => {
           Submit
         </button>
       </form>
+
+      <div className="alert alert-light" role="alert">
+        {message}
+      </div>
     </div>
   );
 };

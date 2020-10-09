@@ -28,6 +28,23 @@ const findByTitle = (title) => {
   return http.get(`/SFPosts?title=${title}`);
 };
 
+const upload = (file, onUploadProgress) => {
+  let formData = new FormData();
+
+  formData.append("file", file);
+
+  return http.post("/upload", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    onUploadProgress,
+  });
+};
+
+const getFiles = () => {
+  return http.get("/files");
+};
+
 export default {
   getAll,
   get,
@@ -36,4 +53,6 @@ export default {
   remove,
   removeAll,
   findByTitle,
+  upload,
+  getFiles,
 };

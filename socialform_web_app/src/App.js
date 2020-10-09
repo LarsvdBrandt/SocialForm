@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+//Components
 import Navbar from "./components/Navbar";
 import GetRequest from "./components/GetRequest.js";
 import PostRequest from "./components/PostRequest.js";
@@ -9,7 +12,7 @@ import EditPost from "./components/EditPost";
 import Login from "./components/Login";
 import Footer from "./components/Footer";
 import PhotoDetails from "./components/PhotoDetails";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import FileUpload from "./components/FileUpload";
 
 function App() {
   return (
@@ -23,6 +26,7 @@ function App() {
         <Route path="/PhotoDetails" component={PhotoDetails} />
         <Route path="/PostRequest" component={PostRequest} />
         <Route path="/GetRequest" component={GetRequest} />
+        <Route path="/FileUpload" component={FileUpload} />
         <hr />
         <Footer />
       </div>

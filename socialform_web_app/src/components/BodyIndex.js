@@ -5,7 +5,7 @@ import CardIndex from "./CardIndex";
 
 function BodyIndex() {
   return (
-    <div class="row mt-4 justify-content-center">
+    <div className="row mt-4 justify-content-center">
       <CardIndex />
       <CardIndex />
       <CardIndex />
