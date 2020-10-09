@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import CRUDService from "../services/CRUDService";
+import { withRouter } from "react-router-dom";
 
 const PostRequest = () => {
   const [post, setPost] = useState({ title: "", imgSrc: "", comment: "" });
@@ -11,7 +12,7 @@ const PostRequest = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post("https://localhost:44352/api/SFPosts", post).then((res) => {
+    CRUDService.create(post).then((res) => {
       console.log(res);
       console.log(res.data);
     });
@@ -52,7 +53,7 @@ const PostRequest = () => {
         </div>
         <br></br>
         <button className="btn btn-primary" type="submit">
-          Add
+          Submit
         </button>
       </form>
     </div>

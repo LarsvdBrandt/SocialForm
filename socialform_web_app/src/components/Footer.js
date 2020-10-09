@@ -1,5 +1,4 @@
 import React from "react";
-import socialformlogo from "../images/socialformlogo.png";
 
 function Footer() {
   return (

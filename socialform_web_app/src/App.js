@@ -5,7 +5,8 @@ import Navbar from "./components/Navbar";
 import GetRequest from "./components/GetRequest.js";
 import PostRequest from "./components/PostRequest.js";
 import BodyIndex from "./components/BodyIndex";
-import PersonList from "./components/PersonList";
+import EditPost from "./components/EditPost";
+import Login from "./components/Login";
 import Footer from "./components/Footer";
 import PhotoDetails from "./components/PhotoDetails";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -17,7 +18,8 @@ function App() {
         <Navbar />
         <hr />
         <Route exact path="/" component={BodyIndex} />
-        <Route path="/Login" component={PersonList} />
+        <Route path="/Login" component={Login} />
+        <Route path="/EditPost" component={EditPost} />
         <Route path="/PhotoDetails" component={PhotoDetails} />
         <Route path="/PostRequest" component={PostRequest} />
         <Route path="/GetRequest" component={GetRequest} />
