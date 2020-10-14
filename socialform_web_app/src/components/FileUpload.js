@@ -1,52 +1,37 @@
-import Axios from "axios";
-import React, { useState, useEffect, Fragment } from "react";
-import CRUDService from "../services/CRUDService";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const FileUpload = () => {
-  const [file, setFile] = useState("");
-  const [fileName, setFileName] = useState("Choose File");
-  const [uploadedFile, setUploadedFile] = useState({});
 
-  const onChange = (e) => {
+  const [file, setFile] = useState();
+  const [fileName, setFileName] = useState();
+
+  const saveFile = (e) => {
+    console.log(e.target.files[0]);
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", file);
-    try {
-      const res = await Axios.post("/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      const { fileName, filePath } = res.data;
-      setUploadedFile({ fileName, filePath });
-    } catch {
-      console.log("error");
-    }
-  };
 
-  return (
-    <Fragment>
-      <form onSubmit={onSubmit}>
-        <div className="custom-file mb-4">
-          <input
-            type="file"
-            className="custom-file-input"
-            id="customFile"
-            onChange={onChange}
-          />
-          <label className="custom-file-label" htmlFor="customFile">
-            {fileName}
-          </label>
-        </div>
-        <input type="submit" value="upload" className="btn btn-primary" />
-      </form>
-    </Fragment>
-  );
+const uploadFile = async (e) => {
+  console.log(file);
+  const formData = new FormData();
+  formData.append("formFile", file);
+  formData.append("fileName", fileName);
+  try{
+    const res = await axios.post("https://localhost:44352/api/FileUpload", formData);
+    console.log(res);
+  }
+  catch(ex){
+    console.log(ex);
+  }
 };
+    return (
+      <div>
+        <input type="file" onChange={saveFile} />
+        <input type="button" value="upload" onClick={uploadFile} />
+      </div>
+    );
+  };
 
 export default FileUpload;

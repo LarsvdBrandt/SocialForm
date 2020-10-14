@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CRUDService from "../services/CRUDService";
-import { withRouter } from "react-router-dom";
+import  { Redirect } from 'react-router-dom'
 
 const PostRequest = () => {
   const [post, setPost] = useState({ title: "", imgSrc: "", comment: "" });
@@ -27,7 +27,7 @@ const PostRequest = () => {
           <label for="title">Gebruiker</label>
           <input
             className="form-control"
-            placeholder="Title"
+            placeholder="User"
             type="text"
             name="title"
             onChange={handleChange}
