@@ -1,132 +1,3 @@
-/* * {
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #f4f4f4f4;
-  font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin: 0;
-}
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* CONTAINERS *
-.navbarFlexBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-decoration: none;
-  font-family: Rockwell, "Courier New", Courier, Georgia, Times,
-    "Times New Roman", serif;
-}
-.navbarFlexBoxCenter {
-  width: 50vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-decoration: none;
-}
-
-/* NAVBAR *
-nav {
-  width: 100%;
-  background-color: transparent;
-  border: 2px solid #707070;
-  padding: 0px 40px;
-}
-nav input[type="text"] {
-  padding: 6px;
-  width: 26vw;
-  font-size: 22px;
-  border: 1px solid #707070;
-  color: #676767;
-}
-nav .search-container button {
-  padding: 6px;
-  margin-left: -35px;
-  background: #f7f7f7;
-  color: #676767;
-  font-size: 22px;
-  border: none;
-  cursor: pointer;
-}
-nav .search-container button:hover {
-  background: #ccc;
-}
-.navbarText {
-  font-weight: normal;
-  font-size: 40px;
-  color: #707070;
-}
-.navbarButton {
-  padding: 7px 30px;
-  font-size: 21px;
-  background: #fff;
-  border: 1px solid #707070;
-  border-radius: 4px;
-  color: #707070;
-  cursor: pointer;
-  text-decoration: none;
-}
-.navbarButton:hover {
-  background: #ccc;
-}
-.navbarLogo {
-  width: 50px;
-  height: 50px;
-}
-.navbarHubIcon {
-  justify-self: start;
-  text-decoration: none;
-  color: black;
-  font-size: 50px;
-}
-.navbarAvatarButton {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 50px;
-} */
-
 .navbar-Logo {
   width: 60px;
   height: 60px;
@@ -201,4 +72,24 @@ nav .search-container button:hover {
 .edit-form {
   max-width: 300px;
   margin: auto;
+}
+
+#login .container #login-row #login-column #login-box {
+  margin-top: 0px;
+  max-width: 600px;
+  height: auto;
+  border: 1px solid #9c9c9c;
+  background-color: #fcfcfc;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login
+  .container
+  #login-row
+  #login-column
+  #login-box
+  #login-form
+  #register-link {
+  margin-top: -85px;
 }

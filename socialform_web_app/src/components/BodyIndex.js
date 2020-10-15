@@ -1,6 +1,4 @@
 import React from "react";
-import testPhoto from "../images/TestPhoto.png";
-import { Link } from "react-router-dom";
 import CardIndex from "./CardIndex";
 
 function BodyIndex() {

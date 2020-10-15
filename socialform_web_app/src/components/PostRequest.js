@@ -63,16 +63,6 @@ const PostRequest = () => {
         <label for="title">Foto</label>
         <input className="form-control-file" type="file" name="imgSrc" onChange={saveFile} required />
       </div>
-        {/* <div>
-          <input
-            className="form-control"
-            placeholder="ImgSrc"
-            name="imgSrc"
-            value={fileName}
-            onChange={handleChange}
-            required
-          />
-        </div> */}
         <div>
           <label for="title">Comment</label>
           <input
