@@ -59,10 +59,15 @@ const PostRequest = () => {
             required
           />
         </div>
-        <div>
+        <p>Image</p>
+        <div class="custom-file mb-3">
+            <input type="file" class="custom-file-input" id="customFile" name="imgSrc" onChange={saveFile} required />
+            <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+        {/* <div>
         <label for="title">Foto</label>
         <input className="form-control-file" type="file" name="imgSrc" onChange={saveFile} required />
-      </div>
+        </div> */}
         <div>
           <label for="title">Comment</label>
           <input
