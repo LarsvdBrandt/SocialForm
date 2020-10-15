@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import CRUDService from "../services/CRUDService";
 
 const EditPost = (props) => {
-  const [currentPost, setCurrentPost] = useState({
+  const initialPostState = {
     id: null,
     title: "",
     imgSrc: "",
     comment: "",
-  });
+  };
+
+  const [currentPost, setCurrentPost] = useState(initialPostState);
+  const [message, setMessage] = useState("");
 
   const getPost = (id) => {
     CRUDService.get(id)
@@ -41,6 +44,7 @@ const EditPost = (props) => {
       .then((response) => {
         setCurrentPost({ ...currentPost, published: status });
         console.log(response.data);
+        setMessage("update successful");
       })
       .catch((e) => {
         console.log(e);
@@ -61,7 +65,7 @@ const EditPost = (props) => {
     CRUDService.remove(currentPost.id)
       .then((response) => {
         console.log(response.data);
-        props.history.push("/tutorials");
+        props.history.push("/");
       })
       .catch((e) => {
         console.log(e);
@@ -74,7 +78,7 @@ const EditPost = (props) => {
           <h4>Post</h4>
           <form>
             <div className="form-group">
-              <label htmlFor="title">Title</label>
+              <label htmlFor="title">{currentPost.title}</label>
               <input
                 type="text"
                 className="form-control"
@@ -106,6 +110,13 @@ const EditPost = (props) => {
                 onChange={handleInputChange}
               />
             </div>
+
+            <div className="form-group">
+              <label>
+                <strong>Status:</strong>
+              </label>
+              {currentPost.title ? "Published" : "Pending"}
+            </div>
           </form>
 
           <button className="badge badge-danger mr-2" onClick={deletePost}>
@@ -119,11 +130,12 @@ const EditPost = (props) => {
           >
             Update
           </button>
+          <p>{message}</p>
         </div>
       ) : (
         <div>
           <br />
-          <p>Please click on a post...</p>
+          <p>Please click on a Post...</p>
         </div>
       )}
     </div>
