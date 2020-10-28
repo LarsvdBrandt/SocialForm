@@ -1,39 +1,34 @@
-import React, { useState, useEffect } from "react";
-import CRUDService from "../services/CRUDService";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
+import React from "react";
+// import CRUDService from "../services/CRUDService";
+// import axios from "axios";
+// import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const FileUpload = () => {
-  const [file, setFile] = useState();
-  const [fileName, setFileName] = useState();
+  const [register, handleSubmit] = useForm();
 
-  const onChangeHandler = (e) => {
-    console.log(e.target.files[0]);
-    setFile(e.target.files[0]);
-  };
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append("picture", data.picture[0]);
 
-  const onClickHandler = () => {
-    const data = new FormData();
-    data.append("file", file);
-    axios
-      .post("http://localhost:8000/upload", data, {
-        // receive two parameter endpoint url ,form data
-      })
-      .then((res) => {
-        // then print response status
-        console.log(res.statusText);
-      });
+    const res = await fetch("http://localhost:4000/picture", {
+      method: "POST",
+      body: formData,
+    }).then((res) => res.json());
+    alert(JSON.stringify(res));
   };
 
   return (
     <div>
-      <input
-        type="file"
-        // class="custom-file-input"
-        name="imgSrc"
-        onChange={onChangeHandler}
-      />
-      <input type="button" value="upload" onClick={onClickHandler} />
+      <form onSubmit={handleSubmit((onSubmit) => {})}>
+        <input
+          ref={register}
+          type="file"
+          // class="custom-file-input"
+          name="picture"
+        />
+        <button type="button">submit</button>
+      </form>
     </div>
   );
 };
