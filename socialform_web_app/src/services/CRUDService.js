@@ -1,8 +1,7 @@
 import http from "../http-common";
 
-const getAll = () => {
-  return http.get("/SFPosts");
-};
+const getAll = () => http.get("/SFPosts");
+
 
 const get = (id) => {
   return http.get(`/SFPosts/${id}`);

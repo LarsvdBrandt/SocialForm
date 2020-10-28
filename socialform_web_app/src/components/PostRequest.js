@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CRUDService from "../services/CRUDService";
-import  axios from 'axios'
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const PostRequest = () => {
+  const history = useHistory();
   const [post, setPost] = useState({ title: "", imgSrc: "", comment: "" });
   const [message, setMessage] = useState("");
 
@@ -34,16 +36,18 @@ const PostRequest = () => {
     const formData = new FormData();
     formData.append("formFile", file);
     formData.append("fileName", fileName);
-    try{
-      axios.post("https://localhost:44352/api/FileUpload", formData).then((res) => {
-      console.log(res);
-      });
-    }
-    catch(ex){
+    try {
+      axios
+        .post("https://localhost:44352/api/FileUpload", formData)
+        .then((res) => {
+          console.log(res);
+          history.push("/");
+        });
+    } catch (ex) {
       console.log(ex);
     }
-
   };
+
   return (
     <div className="container">
       <h2>Post test</h2>
@@ -61,8 +65,17 @@ const PostRequest = () => {
         </div>
         <p>Image</p>
         <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="customFile" name="imgSrc" onChange={saveFile} required />
-            <label class="custom-file-label" for="customFile">Choose file</label>
+          <input
+            type="file"
+            class="custom-file-input"
+            id="customFile"
+            name="imgSrc"
+            onChange={saveFile}
+            required
+          />
+          <label class="custom-file-label" for="customFile">
+            Choose file
+          </label>
         </div>
         {/* <div>
         <label for="title">Foto</label>

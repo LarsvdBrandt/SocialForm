@@ -1,37 +1,41 @@
 import React, { useState, useEffect } from "react";
+import CRUDService from "../services/CRUDService";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const FileUpload = () => {
-
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState();
 
-  const saveFile = (e) => {
+  const onChangeHandler = (e) => {
     console.log(e.target.files[0]);
     setFile(e.target.files[0]);
-    setFileName(e.target.files[0].name);
   };
 
+  const onClickHandler = () => {
+    const data = new FormData();
+    data.append("file", file);
+    axios
+      .post("http://localhost:8000/upload", data, {
+        // receive two parameter endpoint url ,form data
+      })
+      .then((res) => {
+        // then print response status
+        console.log(res.statusText);
+      });
+  };
 
-const uploadFile = async (e) => {
-  console.log(file);
-  const formData = new FormData();
-  formData.append("formFile", file);
-  formData.append("fileName", fileName);
-  try{
-    const res = await axios.post("https://localhost:44352/api/FileUpload", formData);
-    console.log(res);
-  }
-  catch(ex){
-    console.log(ex);
-  }
+  return (
+    <div>
+      <input
+        type="file"
+        // class="custom-file-input"
+        name="imgSrc"
+        onChange={onChangeHandler}
+      />
+      <input type="button" value="upload" onClick={onClickHandler} />
+    </div>
+  );
 };
-    return (
-      <div>
-        <input type="file" onChange={saveFile} />
-        <input type="button" value="upload" onClick={uploadFile} />
-      </div>
-    );
-  };
 
 export default FileUpload;
