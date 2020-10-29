@@ -1,36 +1,63 @@
-import React from "react";
-// import CRUDService from "../services/CRUDService";
-// import axios from "axios";
-// import { useHistory } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import React, { useRef, useState } from "react";
+import axios from "axios";
 
-const FileUpload = () => {
-  const [register, handleSubmit] = useForm();
+function FileUpload() {
+  const [file, setFile] = useState(""); // storing the uploaded file
+  // storing the recived file from backend
+  const [data, getFile] = useState({ name: "", path: "" });
+  const [progress, setProgess] = useState(0); // progess bar
+  const el = useRef(); // accesing input element
 
-  const onSubmit = async (data) => {
+  const handleChange = (e) => {
+    setProgess(0);
+    const file = e.target.files[0]; // accessing file
+    console.log(file);
+    setFile(file); // storing file
+  };
+
+  const uploadFile = () => {
     const formData = new FormData();
-    formData.append("picture", data.picture[0]);
-
-    const res = await fetch("http://localhost:4000/picture", {
-      method: "POST",
-      body: formData,
-    }).then((res) => res.json());
-    alert(JSON.stringify(res));
+    formData.append("file", file); // appending file
+    axios
+      .post("http://localhost:4500/upload", formData, {
+        onUploadProgress: (ProgressEvent) => {
+          let progress =
+            Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100) +
+            "%";
+          setProgess(progress);
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        getFile({
+          name: res.data.name,
+          path: "http://localhost:4500" + res.data.path,
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit((onSubmit) => {})}>
-        <input
-          ref={register}
-          type="file"
-          // class="custom-file-input"
-          name="picture"
-        />
-        <button type="button">submit</button>
-      </form>
+      <div className="file-upload">
+        <input type="file" ref={el} onChange={handleChange} />
+        <div className="progessBar" style={{ width: progress }}>
+          {progress}
+        </div>
+        <button onClick={uploadFile} className="upbutton">
+          Upload
+        </button>
+        <hr />
+        {/* displaying received image*/}
+        {data.path && (
+          <img
+            src={require("../uploads/" + data.name)}
+            alt={"http://localhost:3000/src/uploads/" + data.name}
+          />
+        )}
+      </div>
     </div>
   );
-};
+}
 
 export default FileUpload;

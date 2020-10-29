@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import CRUDService from "../services/CRUDService";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -8,21 +8,25 @@ const PostRequest = () => {
   const [post, setPost] = useState({ title: "", imgSrc: "", comment: "" });
   const [message, setMessage] = useState("");
 
-  const [file, setFile] = useState();
-  const [fileName, setFileName] = useState();
-
-  const saveFile = (e) => {
-    console.log(e.target.files[0]);
-    setFile(e.target.files[0]);
-    setFileName(e.target.files[0].name);
-    setPost({ ...post, [e.target.name]: e.target.files[0].name });
-  };
+  const [file, setFile] = useState(""); // storing the uploaded file
+  // storing the recived file from backend
+  const [data, getFile] = useState({ name: "", path: "" });
+  const [progress, setProgess] = useState(0); // progess bar
+  const el = useRef(); // accesing input element
 
   const handleChange = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleUpload = (e) => {
+    setProgess(0);
+    const file = e.target.files[0]; // accessing file
+    console.log(file);
+    setFile(file); // storing file
+    setPost({ ...post, [e.target.name]: e.target.files[0].name });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     CRUDService.create(post).then((res) => {
@@ -31,21 +35,26 @@ const PostRequest = () => {
       setMessage("Er is een post aangemaakt!");
     });
 
-    //fileupload
-    console.log(file);
     const formData = new FormData();
-    formData.append("formFile", file);
-    formData.append("fileName", fileName);
-    try {
-      axios
-        .post("https://localhost:44352/api/FileUpload", formData)
-        .then((res) => {
-          console.log(res);
-          history.push("/");
+    formData.append("file", file); // appending file
+    axios
+      .post("http://localhost:4500/upload", formData, {
+        onUploadProgress: (ProgressEvent) => {
+          let progress =
+            Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100) +
+            "%";
+          setProgess(progress);
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        getFile({
+          name: res.data.name,
+          path: "http://localhost:4500" + res.data.path,
         });
-    } catch (ex) {
-      console.log(ex);
-    }
+        history.push("/GetRequest");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -68,9 +77,10 @@ const PostRequest = () => {
           <input
             type="file"
             class="custom-file-input"
-            id="customFile"
+            type="file"
+            ref={el}
             name="imgSrc"
-            onChange={saveFile}
+            onChange={handleUpload}
             required
           />
           <label class="custom-file-label" for="customFile">

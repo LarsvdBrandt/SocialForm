@@ -1,43 +1,37 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
-const morgan = require("morgan");
 
 const app = express();
 
-app.use(
-  fileUpload({
-    createParentPath: true,
-  })
-);
+// middle ware
+app.use(express.static("public")); //to access the files in public folder
+app.use(cors()); // it enables all cors requests
+app.use(fileUpload());
 
-app.use(cors);
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan("dev"));
-
-app.post("/picture", async (req, res) => {
-  try {
-    if (!req.files) {
-      res.send({
-        status: false,
-        message: "No files",
-      });
-    } else {
-      const { picture } = req.files;
-
-      picture.mv("./uploads" + picture.name);
-
-      res.send({
-        status: true,
-        message: "File is uploaded",
-      });
-    }
-  } catch (e) {
-    res.status(500).send(e);
+// file upload api
+app.post("/upload", (req, res) => {
+  if (!req.files) {
+    return res.status(500).send({ msg: "file is not found" });
   }
+  // accessing the file
+  const myFile = req.files.file;
+
+  //  mv() method places the file inside public directory
+  // myFile.mv(`${__dirname}/public/${myFile.name}`, function (err) {
+  myFile.mv(`${__dirname}/uploads/${myFile.name}`, function (err) {
+    if (err) {
+      console.log(err);
+      return res.status(500).send({ msg: "Error occured" });
+    }
+    // returing the response with file path and name
+    return res.send({
+      name: myFile.name,
+      path: `/${myFile.name}`,
+    });
+  });
 });
 
-const port = process.env.PORT || 4000;
-
-app.listen(port, () => console.log("server is running on port ${port}"));
+app.listen(4500, () => {
+  console.log("server is running at port 4500");
+});

@@ -78,6 +78,10 @@ const PostsList = () => {
               <label>
                 <strong>imgSrc:</strong>
               </label>{" "}
+              <img
+                src={require("../uploads/" + currentPost.imgSrc)}
+                alt={currentPost.imgSrc}
+              />
               {currentPost.imgSrc}
             </div>
             <div>
