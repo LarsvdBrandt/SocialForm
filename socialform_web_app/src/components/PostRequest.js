@@ -52,7 +52,7 @@ const PostRequest = () => {
           name: res.data.name,
           path: "http://localhost:4500" + res.data.path,
         });
-        history.push("/GetRequest");
+        history.push("/");
       })
       .catch((err) => console.log(err));
   };

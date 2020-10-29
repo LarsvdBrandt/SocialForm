@@ -3,7 +3,7 @@ import CRUDService from "../services/CRUDService";
 
 const EditPost = (props) => {
   const initialPostState = {
-    id: null,
+    id: props.id,
     title: "",
     imgSrc: "",
     comment: "",
@@ -78,7 +78,7 @@ const EditPost = (props) => {
           <h4>Post</h4>
           <form>
             <div className="form-group">
-              <label htmlFor="title">{currentPost.title}</label>
+              <label htmlFor="title">title</label>
               <input
                 type="text"
                 className="form-control"

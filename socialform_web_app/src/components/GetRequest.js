@@ -79,6 +79,7 @@ const PostsList = () => {
                 <strong>imgSrc:</strong>
               </label>{" "}
               <img
+                className="card-image-index"
                 src={require("../uploads/" + currentPost.imgSrc)}
                 alt={currentPost.imgSrc}
               />
