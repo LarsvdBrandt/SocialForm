@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import CRUDService from "../services/CRUDService";
 
 const EditPost = (props) => {
+  const { state } = useLocation();
   const initialPostState = {
-    id: props.id,
+    id: null,
     title: "",
     imgSrc: "",
     comment: "",
@@ -13,7 +15,7 @@ const EditPost = (props) => {
   const [message, setMessage] = useState("");
 
   const getPost = (id) => {
-    CRUDService.get(id)
+    CRUDService.get(state)
       .then((response) => {
         setCurrentPost(response.data);
         console.log(response.data);

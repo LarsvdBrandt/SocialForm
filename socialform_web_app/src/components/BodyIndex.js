@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CRUDService from "../services/CRUDService";
 import { Link } from "react-router-dom";
-import CardIndex from "./CardIndex";
+// import CardIndex from "./CardIndex";
 
 function BodyIndex() {
   const [posts, setPosts] = useState([]);
@@ -25,7 +25,12 @@ function BodyIndex() {
       {posts &&
         posts.map((post, index) => (
           <div className="card" style={{ width: "260px" }}>
-            <Link to="/PhotoDetails">
+            <Link
+              to={{
+                pathname: "/PhotoDetails/" + post.id,
+                state: post.id,
+              }}
+            >
               <img
                 className="card-image-index"
                 src={require("../uploads/" + post.imgSrc)}

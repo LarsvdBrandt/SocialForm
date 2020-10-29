@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 //Components
 import Navbar from "./components/Navbar";
@@ -29,7 +29,7 @@ function App() {
         <Route path="/PostRequest" component={PostRequest} />
         <Route path="/GetRequest" component={GetRequest} />
         <Route path="/FileUpload" component={FileUpload} />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );

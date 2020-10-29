@@ -93,7 +93,10 @@ const PostsList = () => {
             </div>
 
             <Link
-              to={"/EditPost/" + currentPost.id}
+              to={{
+                pathname: "/EditPost/" + currentPost.id,
+                state: currentPost.id,
+              }}
               className="badge badge-warning"
             >
               Edit
