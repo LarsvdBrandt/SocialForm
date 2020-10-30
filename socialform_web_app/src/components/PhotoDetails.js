@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PostService from "../services/PostService";
 import CommentService from "../services/CommentService";
+import xmark from "../images/x-mark.png";
 
 const PhotoDetails = (props) => {
   const { state } = useLocation();
@@ -21,6 +22,17 @@ const PhotoDetails = (props) => {
 
   const handleChange = (event) => {
     setNewComment({ ...newComment, [event.target.name]: event.target.value });
+  };
+
+  const removeComment = async (event) => {
+    CommentService.remove(event.id)
+      .then((response) => {
+        console.log(response.data);
+        refreshCommentList();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   const handleSubmit = async (event) => {
@@ -91,7 +103,18 @@ const PhotoDetails = (props) => {
             {comments &&
               comments.map((comment, index) => (
                 <div>
-                  <p>{comment.comment}</p>
+                  <div className="row">
+                    <div className="col-sm-1">
+                      <span
+                        onClick={() => removeComment({ id: comment.commentId })}
+                      >
+                        <img src={xmark} style={{ height: "10px" }}></img>
+                      </span>
+                    </div>
+                    <div className="col-sm-11">
+                      <p>{comment.comment}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
           </div>
