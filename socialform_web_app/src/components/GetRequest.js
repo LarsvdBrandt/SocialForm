@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CRUDService from "../services/CRUDService";
+import PostService from "../services/PostService";
 import { Link } from "react-router-dom";
 
 const PostsList = () => {
@@ -12,7 +12,7 @@ const PostsList = () => {
   }, []);
 
   const retrievePosts = () => {
-    CRUDService.getAll()
+    PostService.getAll()
       .then((response) => {
         setPosts(response.data);
         console.log(response.data);
@@ -23,7 +23,7 @@ const PostsList = () => {
   };
 
   const removePost = () => {
-    CRUDService.remove(currentPost.id)
+    PostService.remove(currentPost.id)
       .then((response) => {
         console.log(response.data);
         refreshList();

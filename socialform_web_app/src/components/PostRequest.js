@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import CRUDService from "../services/CRUDService";
+import PostService from "../services/PostService";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -29,11 +29,13 @@ const PostRequest = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    CRUDService.create(post).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      setMessage("Er is een post aangemaakt!");
-    });
+    PostService.create(post)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        setMessage("Er is een post aangemaakt!");
+      })
+      .catch((err) => console.log(err));
 
     const formData = new FormData();
     formData.append("file", file); // appending file

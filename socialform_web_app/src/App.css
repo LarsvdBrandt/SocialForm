@@ -121,6 +121,11 @@
   height: 58%;
 }
 
+.scrollbar {
+  overflow-y: auto;
+  height: 200px;
+}
+
 /* .photodetailsComment {
   height: 90%;
   width: auto;

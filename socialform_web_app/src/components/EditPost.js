@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import CRUDService from "../services/CRUDService";
+import PostService from "../services/PostService";
 
 const EditPost = (props) => {
   const { state } = useLocation();
@@ -15,7 +15,7 @@ const EditPost = (props) => {
   const [message, setMessage] = useState("");
 
   const getPost = (id) => {
-    CRUDService.get(state)
+    PostService.get(state)
       .then((response) => {
         setCurrentPost(response.data);
         console.log(response.data);
@@ -42,7 +42,7 @@ const EditPost = (props) => {
       comment: currentPost.comment,
     };
 
-    CRUDService.update(currentPost.id, data)
+    PostService.update(currentPost.id, data)
       .then((response) => {
         setCurrentPost({ ...currentPost, published: status });
         console.log(response.data);
@@ -54,7 +54,7 @@ const EditPost = (props) => {
   };
 
   const updatePost = () => {
-    CRUDService.update(currentPost.id, currentPost)
+    PostService.update(currentPost.id, currentPost)
       .then((response) => {
         console.log(response.data);
       })
@@ -64,7 +64,7 @@ const EditPost = (props) => {
   };
 
   const deletePost = () => {
-    CRUDService.remove(currentPost.id)
+    PostService.remove(currentPost.id)
       .then((response) => {
         console.log(response.data);
         props.history.push("/");

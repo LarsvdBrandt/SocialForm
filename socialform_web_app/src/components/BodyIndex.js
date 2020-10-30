@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CRUDService from "../services/CRUDService";
+import PostService from "../services/PostService";
 import { Link } from "react-router-dom";
 // import CardIndex from "./CardIndex";
 
@@ -11,7 +11,7 @@ function BodyIndex() {
   }, []);
 
   const retrievePosts = () => {
-    CRUDService.getAll()
+    PostService.getAll()
       .then((response) => {
         setPosts(response.data);
         console.log(response.data);
