@@ -15,7 +15,7 @@ const PhotoDetails = (props) => {
   const [currentPost, setCurrentPost] = useState(initialPostState);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
-    PostId: 1,
+    PostId: state,
     UserId: 1,
     Comment: "",
   });
