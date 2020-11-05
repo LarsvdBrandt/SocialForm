@@ -17,14 +17,18 @@ function BodyIndex() {
         console.log(response.data);
       })
       .catch((e) => {
-        console.log(e);
+        console.log(e.message);
       });
   };
   return (
     <div className="row mt-4 justify-content-center">
       {posts &&
         posts.map((post, index) => (
-          <div className="card" style={{ width: "260px", overflow: "hidden" }}>
+          <div
+            className="card"
+            role="card"
+            style={{ width: "260px", overflow: "hidden" }}
+          >
             <Link
               to={{
                 pathname: "/PhotoDetails/" + post.id,
