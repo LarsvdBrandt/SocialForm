@@ -24,7 +24,7 @@ function BodyIndex() {
     <div className="row mt-4 justify-content-center">
       {posts &&
         posts.map((post, index) => (
-          <div className="card" style={{ width: "260px" }}>
+          <div className="card" style={{ width: "260px", overflow: "hidden" }}>
             <Link
               to={{
                 pathname: "/PhotoDetails/" + post.id,

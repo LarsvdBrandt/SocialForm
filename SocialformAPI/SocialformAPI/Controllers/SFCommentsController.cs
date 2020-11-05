@@ -22,15 +22,18 @@ namespace SocialformAPI.Controllers
         }
 
         // GET: api/SFComments
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<SFComments>>> GetSFComments()
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<SFComments>>> GetSFComments(long id)
         {
-            return await _context.SFComments.ToListAsync();
+            var sfComments =  _context.SFComments.Where(a => a.PostId == id).ToList();
+
+            return sfComments;
         }
 
+        /*
         // GET: api/SFComments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SFComments>> GetSFComments(long id)
+        public async Task<ActionResult<SFComments>> GetSFComment(long id)
         {
             var sFComments = await _context.SFComments.FindAsync(id);
 
@@ -40,7 +43,7 @@ namespace SocialformAPI.Controllers
             }
 
             return sFComments;
-        }
+        }*/
 
         // PUT: api/SFComments/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

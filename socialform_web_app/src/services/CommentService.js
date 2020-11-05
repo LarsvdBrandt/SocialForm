@@ -1,6 +1,6 @@
 import http from "../common-api";
 
-const getAll = () => http.get("/SFComments");
+const getAll = (id) => http.get(`/SFComments/${id}`);
 
 const create = (data) => {
   return http.post("/SFComments", data);

@@ -43,10 +43,20 @@ const PhotoDetails = (props) => {
         console.log(res);
         console.log(res.data);
         refreshCommentList();
+        handleReset();
       })
       .catch((e) => {
         console.log(e);
       });
+  };
+
+  const handleReset = () => {
+    Array.from(document.querySelectorAll("input")).forEach(
+      (input) => (input.value = "")
+    );
+    this.setState({
+      itemvalues: [{}],
+    });
   };
 
   useEffect(() => {
@@ -54,7 +64,7 @@ const PhotoDetails = (props) => {
   }, []);
 
   const retrieveComments = () => {
-    CommentService.getAll()
+    CommentService.getAll(state)
       .then((response) => {
         setComments(response.data);
         console.log(response.data);
@@ -64,7 +74,7 @@ const PhotoDetails = (props) => {
       });
   };
 
-  const getPost = (id) => {
+  const getPost = () => {
     PostService.get(state)
       .then((response) => {
         setCurrentPost(response.data);
@@ -95,8 +105,8 @@ const PhotoDetails = (props) => {
         <div className="col-lg-6">
           <h3>@{currentPost.title}</h3>
           <div className="card card-info photodetailscommentcontainer  scrollbar">
-            <div className="card-block">
-              <h6>{currentPost.comment}</h6>
+            <div>
+              <h6 className="card-block-fixed">{currentPost.comment}</h6>
               <hr></hr>
             </div>
 
