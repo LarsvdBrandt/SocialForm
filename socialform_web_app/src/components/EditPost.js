@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import PostService from "../services/PostService";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const EditPost = (props) => {
+  const history = useHistory();
   const { state } = useLocation();
   const initialPostState = {
     id: null,
@@ -13,6 +16,12 @@ const EditPost = (props) => {
 
   const [currentPost, setCurrentPost] = useState(initialPostState);
   const [message, setMessage] = useState("");
+
+  const [file, setFile] = useState(""); // storing the uploaded file
+  // storing the recived file from backend
+  const [data, getFile] = useState({ name: "", path: "" });
+  const [progress, setProgess] = useState(0); // progess bar
+  const el = useRef(); // accesing input element
 
   const getPost = (id) => {
     PostService.get(state)
@@ -32,6 +41,14 @@ const EditPost = (props) => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setCurrentPost({ ...currentPost, [name]: value });
+  };
+
+  const handleUpload = (e) => {
+    setProgess(0);
+    const file = e.target.files[0]; // accessing file
+    console.log(file);
+    setFile(file); // storing file
+    setCurrentPost({ ...currentPost, [e.target.name]: e.target.files[0].name });
   };
 
   const updatePublished = (status) => {
@@ -61,6 +78,27 @@ const EditPost = (props) => {
       .catch((e) => {
         console.log(e);
       });
+
+    const formData = new FormData();
+    formData.append("file", file); // appending file
+    axios
+      .post("http://localhost:4500/upload", formData, {
+        onUploadProgress: (ProgressEvent) => {
+          let progress =
+            Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100) +
+            "%";
+          setProgess(progress);
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        getFile({
+          name: res.data.name,
+          path: "http://localhost:4500" + res.data.path,
+        });
+        history.push("/");
+      })
+      .catch((err) => console.log(err));
   };
 
   const deletePost = () => {
@@ -80,7 +118,7 @@ const EditPost = (props) => {
           <h4>Post</h4>
           <form>
             <div className="form-group">
-              <label htmlFor="title">title</label>
+              <label htmlFor="title">Title</label>
               <input
                 type="text"
                 className="form-control"
@@ -91,16 +129,29 @@ const EditPost = (props) => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="imgSrc">imgSrc</label>
+              <label htmlFor="imgSrc">Image: {currentPost.imgSrc}</label>
               <input
                 type="text"
                 className="form-control"
                 id="imgSrc"
                 name="imgSrc"
                 value={currentPost.imgSrc}
-                onChange={handleInputChange}
+                hidden
               />
             </div>
+            <div class="custom-file mb-3">
+              <input
+                type="file"
+                class="custom-file-input"
+                type="file"
+                name="imgSrc"
+                onChange={handleUpload}
+              />
+              <label class="custom-file-label" for="customFile">
+                Choose file
+              </label>
+            </div>
+
             <div className="form-group">
               <label htmlFor="comment">comment</label>
               <input
@@ -111,13 +162,6 @@ const EditPost = (props) => {
                 value={currentPost.comment}
                 onChange={handleInputChange}
               />
-            </div>
-
-            <div className="form-group">
-              <label>
-                <strong>Status:</strong>
-              </label>
-              {currentPost.title ? "Published" : "Pending"}
             </div>
           </form>
 

@@ -74,13 +74,12 @@ const PostRequest = () => {
             required
           />
         </div>
-        <p>Image</p>
+        <p>Image: {post.imgSrc}</p>
         <div class="custom-file mb-3">
           <input
             type="file"
             class="custom-file-input"
             type="file"
-            ref={el}
             name="imgSrc"
             onChange={handleUpload}
             required

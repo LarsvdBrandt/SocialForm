@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SocialformAPI.Models;
+using PostService.Models;
 
 namespace SocialformAPI.Data
 {
@@ -16,6 +17,7 @@ namespace SocialformAPI.Data
 
         public DbSet<SFPost> SFPosts { get; set; }
         public DbSet<SFComments> SFComments { get; set; }
+        public DbSet<SFLikes> SFLikes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +25,8 @@ namespace SocialformAPI.Data
             
             modelBuilder.Entity<SFPost>().ToTable("SFPost");
             modelBuilder.Entity<SFComments>().ToTable("SFComments");
+            modelBuilder.Entity<SFLikes>().ToTable("SFLikes");
         }
+
     }
 }

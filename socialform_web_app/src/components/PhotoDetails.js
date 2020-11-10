@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PostService from "../services/PostService";
 import CommentService from "../services/CommentService";
+import LikeService from "../services/LikeService";
 import xmark from "../images/x-mark.png";
 
 const PhotoDetails = (props) => {
@@ -19,6 +20,8 @@ const PhotoDetails = (props) => {
     UserId: 1,
     Comment: "",
   });
+
+  const [likes, setLikes] = useState([]);
 
   const handleChange = (event) => {
     setNewComment({ ...newComment, [event.target.name]: event.target.value });
@@ -74,6 +77,17 @@ const PhotoDetails = (props) => {
       });
   };
 
+  const retrieveLikes = () => {
+    LikeService.getAll(state)
+      .then((response) => {
+        setComments(response.data);
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   const getPost = () => {
     PostService.get(state)
       .then((response) => {
@@ -103,7 +117,7 @@ const PhotoDetails = (props) => {
           />
         </div>
         <div className="col-lg-6">
-          <h3>@{currentPost.title}</h3>
+          <h3>{currentPost.title}</h3>
           <div className="card card-info photodetailscommentcontainer  scrollbar">
             <div>
               <h6 className="card-block-fixed">{currentPost.comment}</h6>
@@ -144,7 +158,8 @@ const PhotoDetails = (props) => {
                       />
                     </div>
                     <button
-                      className="btn btn-secondary btn-lg btn-block"
+                      className="btn btn-outline-success my-2 my-sm-0"
+                      style={{ width: "100%" }}
                       type="submit"
                     >
                       Comment
