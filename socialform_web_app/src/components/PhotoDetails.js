@@ -4,6 +4,7 @@ import PostService from "../services/PostService";
 import CommentService from "../services/CommentService";
 import LikeService from "../services/LikeService";
 import xmark from "../images/x-mark.png";
+import LikeIcon from "../images/LikeIcon.jpg";
 
 const PhotoDetails = (props) => {
   const { state } = useLocation();
@@ -21,7 +22,12 @@ const PhotoDetails = (props) => {
     Comment: "",
   });
 
-  const [likes, setLikes] = useState([]);
+  const [likes, setLikes] = useState("");
+  const [newLike, setNewLike] = useState({
+    PostId: state,
+    UserId: 1,
+    Like: true,
+  });
 
   const handleChange = (event) => {
     setNewComment({ ...newComment, [event.target.name]: event.target.value });
@@ -31,7 +37,7 @@ const PhotoDetails = (props) => {
     CommentService.remove(event.id)
       .then((response) => {
         console.log(response.data);
-        refreshCommentList();
+        refreshList();
       })
       .catch((e) => {
         console.log(e);
@@ -45,7 +51,20 @@ const PhotoDetails = (props) => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        refreshCommentList();
+        refreshList();
+        handleReset();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  const addLike = async () => {
+    LikeService.create(newLike)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        refreshList();
         handleReset();
       })
       .catch((e) => {
@@ -64,6 +83,7 @@ const PhotoDetails = (props) => {
 
   useEffect(() => {
     retrieveComments();
+    retrieveLikes();
   }, []);
 
   const retrieveComments = () => {
@@ -80,8 +100,8 @@ const PhotoDetails = (props) => {
   const retrieveLikes = () => {
     LikeService.getAll(state)
       .then((response) => {
-        setComments(response.data);
-        console.log(response.data);
+        setLikes(response.data.length.toString());
+        console.log(response.data.length.toString());
       })
       .catch((e) => {
         console.log(e);
@@ -99,8 +119,9 @@ const PhotoDetails = (props) => {
       });
   };
 
-  const refreshCommentList = () => {
+  const refreshList = () => {
     retrieveComments();
+    retrieveLikes();
   };
 
   useEffect(() => {
@@ -117,7 +138,21 @@ const PhotoDetails = (props) => {
           />
         </div>
         <div className="col-lg-6">
-          <h3>{currentPost.title}</h3>
+          <div>
+            <div className="row">
+              <div className="col-sm-9">
+                <h3>{currentPost.title}</h3>
+              </div>
+              <div className="col-sm-1">
+                <span onClick={() => addLike({ PostId: state })}>
+                  <img src={LikeIcon} style={{ height: "25px" }}></img>
+                </span>
+              </div>
+              <div className="col-sm-2">
+                <h3>{likes}</h3>
+              </div>
+            </div>
+          </div>
           <div className="card card-info photodetailscommentcontainer  scrollbar">
             <div>
               <h6 className="card-block-fixed">{currentPost.comment}</h6>
@@ -142,31 +177,42 @@ const PhotoDetails = (props) => {
                 </div>
               ))}
           </div>
-          <div className="pb-cmnt-container">
-            <div className="photodetailscommentcontainer">
-              <div className="card card-info">
-                <div className="card-block">
-                  <form onSubmit={handleSubmit}>
-                    <div>
-                      <input
-                        className="pb-cmnt-textarea"
-                        placeholder="Write your comment here!"
-                        type="text"
-                        name="comment"
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <button
-                      className="btn btn-outline-success my-2 my-sm-0"
-                      style={{ width: "100%" }}
-                      type="submit"
-                    >
-                      Comment
-                    </button>
-                  </form>
+          <div className="row">
+            <div className="pb-cmnt-container col-sm-10">
+              <div className="photodetailscommentcontainer">
+                <div className="card card-info">
+                  <div className="card-block">
+                    <form onSubmit={handleSubmit}>
+                      <div>
+                        <input
+                          className="pb-cmnt-textarea"
+                          placeholder="Write your comment here!"
+                          type="text"
+                          name="comment"
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <button
+                        className="btn btn-outline-success my-2 my-sm-0"
+                        style={{ width: "100%" }}
+                        type="submit"
+                      >
+                        Comment
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
+            </div>
+
+            <div className="pb-cmnt-container col-sm-2 likecontainer">
+              <span onClick={addLike}>
+                <img
+                  src={LikeIcon}
+                  style={{ height: "60px", border: "0px" }}
+                ></img>
+              </span>
             </div>
           </div>
         </div>
