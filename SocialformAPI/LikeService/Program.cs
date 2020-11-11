@@ -2,25 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LikeService.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using PostService.Data;
 
-namespace SocialformAPI
+namespace LikeService
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-
             CreateDbIfNotExists(host);
-
             host.Run();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
 
         private static void CreateDbIfNotExists(IHost host)
         {
@@ -30,8 +35,8 @@ namespace SocialformAPI
 
                 try
                 {
-                    var context = services.GetRequiredService<SFPostContext>();
-                    DbPostInitializer.Initialize(context);
+                    var context = services.GetRequiredService<SFLikeContext>();
+                    DbLikeInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {
@@ -40,12 +45,5 @@ namespace SocialformAPI
                 }
             }
         }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
     }
 }

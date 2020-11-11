@@ -133,7 +133,7 @@ const PhotoDetails = (props) => {
         <div className="col-lg-6">
           <img
             className="photodetailsImg"
-            src={require("../uploads/" + "test1.jpg")}
+            src={require("../uploads/" + "among-us-1.jpg")}
             alt={"http://localhost:3000/src/uploads/" + currentPost.imgSrc}
           />
         </div>

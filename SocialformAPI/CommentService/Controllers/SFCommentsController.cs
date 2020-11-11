@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CommentService.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PostService.Data;
 using SocialformAPI.Models;
 
 namespace SocialformAPI.Controllers
@@ -14,9 +14,9 @@ namespace SocialformAPI.Controllers
     [ApiController]
     public class SFCommentsController : ControllerBase
     {
-        private readonly SFPostContext _context;
+        private readonly SFCommentContext _context;
 
-        public SFCommentsController(SFPostContext context)
+        public SFCommentsController(SFCommentContext context)
         {
             _context = context;
         }

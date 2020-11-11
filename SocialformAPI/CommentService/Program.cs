@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CommentService.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using PostService.Data;
 
-namespace SocialformAPI
+namespace CommentService
 {
     public class Program
     {
@@ -30,8 +30,8 @@ namespace SocialformAPI
 
                 try
                 {
-                    var context = services.GetRequiredService<SFPostContext>();
-                    DbPostInitializer.Initialize(context);
+                    var context = services.GetRequiredService<SFCommentContext>();
+                    DbCommentInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

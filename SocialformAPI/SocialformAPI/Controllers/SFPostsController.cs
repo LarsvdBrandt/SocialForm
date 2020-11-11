@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SocialformAPI.Data;
+using PostService.Data;
 using SocialformAPI.Models;
 
 namespace SocialformAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class SFPostsController : ControllerBase
     {
-        private readonly SFContext _context;
+        private readonly SFPostContext _context;
 
-        public SFPostsController(SFContext context)
+        public SFPostsController(SFPostContext context)
         {
             _context = context;
         }

@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace SocialformAPI.Models
 {
-    public class SFCommentsPicker
+    public class SFComments
     {
         [Key]
+        public long CommentId { get; set; }
         public long PostId { get; set; }
+        public long UserId { get; set; }
+        public string Comment { get; set; }
     }
 }

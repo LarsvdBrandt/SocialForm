@@ -70,20 +70,19 @@ const PostsList = () => {
             <h4>Post ID: {currentPost.id}</h4>
             <div>
               <label>
-                <strong>Title:</strong>
+                <strong>User:</strong>
               </label>{" "}
               {currentPost.title}
             </div>
             <div>
               <label>
-                <strong>imgSrc:</strong>
+                <strong>Image:</strong>
               </label>{" "}
               <img
                 className="card-image-index"
                 src={require("../uploads/" + currentPost.imgSrc)}
                 alt={currentPost.imgSrc}
               />
-              {currentPost.imgSrc}
             </div>
             <div>
               <label>

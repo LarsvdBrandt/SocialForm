@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PostService.Models;
-using SocialformAPI.Data;
+using LikeService.Models;
+using LikeService.Data;
 
-namespace PostService.Controllers
+namespace LikeService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class SFLikesController : ControllerBase
     {
-        private readonly SFContext _context;
+        private readonly SFLikeContext _context;
 
-        public SFLikesController(SFContext context)
+        public SFLikesController(SFLikeContext context)
         {
             _context = context;
         }
