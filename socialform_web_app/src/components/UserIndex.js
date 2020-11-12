@@ -31,76 +31,73 @@ function UserIndex(props) {
   }, []);
 
   return (
-    <div class="bg-white shadow rounded overflow-hidden">
-      <div class="px-4 pt-0 pb-4 cover">
-        <div class="media align-items-end profile-head">
-          <div class="profile mr-3">
+    <div className="bg-white shadow rounded overflow-hidden">
+      <div className="px-4 pt-0 pb-4 cover">
+        <div className="media align-items-end profile-head">
+          <div className="profile mr-3">
             <img
               src={ProfilePic}
-              alt="..."
+              alt="profilePicture"
               width="130"
-              class="rounded mb-2 img-thumbnail"
+              className="rounded mb-2 img-thumbnail"
             />
-            <a href="#" class="btn btn-outline-dark btn-sm btn-block">
+            <a href="#" className="btn btn-outline-dark btn-sm btn-block">
               Edit profile
             </a>
           </div>
-          <div class="media-body mb-5 text-white">
-            <h4 class="mt-0 mb-0">{state}</h4>
-            <p class="small mb-4">
+          <div className="media-body mb-5 text-white">
+            <h4 className="mt-0 mb-0">{state}</h4>
+            <p className="small mb-4">
               {" "}
-              <i class="fas fa-map-marker-alt mr-2"></i>
+              <i className="fas fa-map-marker-alt mr-2"></i>
               Nederland
             </p>
           </div>
         </div>
       </div>
-      <div class="bg-light p-4 d-flex justify-content-end text-center">
-        <ul class="list-inline mb-0">
-          <li class="list-inline-item">
-            <h5 class="font-weight-bold mb-0 d-block">{postsCount}</h5>
-            <small class="text-muted">
+      <div className="bg-light p-4 d-flex justify-content-end text-center">
+        <ul className="list-inline mb-0">
+          <li className="list-inline-item">
+            <h5 className="font-weight-bold mb-0 d-block">{postsCount}</h5>
+            <small className="text-muted">
               {" "}
-              <i class="fas fa-image mr-1"></i>Photos
+              <i className="fas fa-image mr-1"></i>Photos
             </small>
           </li>
-          <li class="list-inline-item">
-            <h5 class="font-weight-bold mb-0 d-block">163</h5>
-            <small class="text-muted">
+          <li className="list-inline-item">
+            <h5 className="font-weight-bold mb-0 d-block">163</h5>
+            <small className="text-muted">
               {" "}
-              <i class="fas fa-user mr-1"></i>Followers
+              <i className="fas fa-user mr-1"></i>Followers
             </small>
           </li>
-          <li class="list-inline-item">
-            <h5 class="font-weight-bold mb-0 d-block">180</h5>
-            <small class="text-muted">
+          <li className="list-inline-item">
+            <h5 className="font-weight-bold mb-0 d-block">180</h5>
+            <small className="text-muted">
               {" "}
-              <i class="fas fa-user mr-1"></i>Following
+              <i className="fas fa-user mr-1"></i>Following
             </small>
           </li>
         </ul>
       </div>
-      <div class="py-4 px-4">
-        <div class="d-flex align-items-center justify-content-between mb-3"></div>
-        <div class="row">
-          {posts &&
-            posts.map((post, index) => (
-              <div class="col-lg-3 mb-2 pr-lg-1">
-                <Link
-                  to={{
-                    pathname: "/PhotoDetails/" + post.id,
-                    state: post.id,
-                  }}
-                >
-                  <img
-                    src={require("../uploads/" + post.imgSrc)}
-                    alt={post.imgSrc}
-                    className="UserIndexPhotos"
-                  />
-                </Link>
-              </div>
-            ))}
-        </div>
+      <div className="row mt-4 justify-content-center">
+        {posts &&
+          posts.map((post, index) => (
+            <div className="ml-2 mb-1">
+              <Link
+                to={{
+                  pathname: "/PhotoDetails/" + post.id,
+                  state: post.id,
+                }}
+              >
+                <img
+                  src={require("../uploads/" + post.imgSrc)}
+                  alt="Image"
+                  className="UserIndexPhotos"
+                />
+              </Link>
+            </div>
+          ))}
       </div>
     </div>
   );

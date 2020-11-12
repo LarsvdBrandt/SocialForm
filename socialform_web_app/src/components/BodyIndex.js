@@ -27,7 +27,7 @@ function BodyIndex() {
         posts.map((post, index) => (
           <div
             className="card promoting-card ml-1 mb-1"
-            style={{ maxWidth: "270px" }}
+            style={{ width: "270px" }}
             key={post.id}
           >
             <div className="card-body d-flex flex-row">
