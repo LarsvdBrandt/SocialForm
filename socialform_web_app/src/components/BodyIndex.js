@@ -25,27 +25,61 @@ function BodyIndex() {
       {posts &&
         posts.map((post, index) => (
           <div
-            className="card"
-            role="card"
-            style={{ width: "260px", overflow: "hidden" }}
+            className="card promoting-card"
+            style={{ maxWidth: "300px" }}
+            key={post.id}
           >
-            <Link
-              to={{
-                pathname: "/PhotoDetails/" + post.id,
-                state: post.id,
-              }}
-            >
+            <div className="card-body d-flex flex-row">
               <img
-                className="card-image-index"
-                src={require("../uploads/" + post.imgSrc)}
-                alt={posts.imgSrc}
+                src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg"
+                className="rounded-circle mr-3"
+                height="50px"
+                width="50px"
+                alt="avatar"
               />
-            </Link>
-            <div className="card-body-index">
-              <a className="card-title-index" href="username">
-                {"@" + post.title}
-              </a>
-              <p className="card-text-index">{post.comment}</p>
+
+              <div>
+                <h4 className="card-title font-weight-bold mb-2">
+                  {post.title}
+                </h4>
+                <p className="card-text">
+                  <i className="far fa-clock pr-2"></i>12/11/2020
+                </p>
+              </div>
+            </div>
+
+            <div className="view overlay">
+              <Link
+                to={{
+                  pathname: "/PhotoDetails/" + post.id,
+                  state: post.id,
+                }}
+              >
+                <img
+                  className="card-img-top rounded-0 card-image-index"
+                  src={require("../uploads/" + post.imgSrc)}
+                  alt={post.imgSrc}
+                />
+              </Link>
+            </div>
+
+            <div className="card-body">
+              <div className="collapse-content" id={post.id}>
+                <p className="card-text collapse" id="collapseContent">
+                  {post.comment}
+                </p>
+
+                <a
+                  className="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed"
+                  data-toggle="collapse"
+                  href="#collapseContent"
+                  aria-expanded="false"
+                  aria-controls="collapseContent"
+                  id={post.id}
+                >
+                  <p className="text-primary">View comment</p>
+                </a>
+              </div>
             </div>
           </div>
         ))}

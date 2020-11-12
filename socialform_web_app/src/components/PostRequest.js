@@ -11,7 +11,7 @@ const PostRequest = () => {
   const [file, setFile] = useState(""); // storing the uploaded file
   // storing the recived file from backend
   const [data, getFile] = useState({ name: "", path: "" });
-  const [progress, setProgess] = useState(0); // progess bar
+  const [progress, setProgess] = useState(0); // progess barcd sou
   const el = useRef(); // accesing input element
 
   const handleChange = (event) => {
