@@ -5,6 +5,7 @@ import CommentService from "../services/CommentService";
 import LikeService from "../services/LikeService";
 import xmark from "../images/x-mark.png";
 import LikeIcon from "../images/LikeIcon.jpg";
+import { Link } from "react-router-dom";
 
 const PhotoDetails = (props) => {
   const { state } = useLocation();
@@ -141,7 +142,17 @@ const PhotoDetails = (props) => {
           <div>
             <div className="row">
               <div className="col-sm-9">
-                <h3>{currentPost.title}</h3>
+                <Link
+                  to={{
+                    pathname: "/UserIndex/" + currentPost.title,
+                    state: currentPost.title,
+                  }}
+                  style={{ color: "black" }}
+                >
+                  <h5 className="card-title font-weight-bold mb-2">
+                    {currentPost.title}
+                  </h5>
+                </Link>
               </div>
               <div className="col-sm-1">
                 <span onClick={() => addLike({ PostId: state })}>

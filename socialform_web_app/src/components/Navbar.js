@@ -1,8 +1,16 @@
-import React from "react";
 import socialformlogo from "../images/socialformlogo.png";
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
 function Navbar() {
+  const [searchBarTitle, setSearchBarTitle] = useState({ title: "" });
+
+  const handleChange = (event) => {
+    setSearchBarTitle({
+      ...searchBarTitle,
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <Link to="/" className="navbar-title">
@@ -26,15 +34,24 @@ function Navbar() {
           <input
             className="form-control mr-sm-2"
             type="search"
+            name="title"
             placeholder="Search"
             aria-label="Search"
+            onChange={handleChange}
           />
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
+          <Link
+            to={{
+              pathname: "/UserIndex/" + searchBarTitle.title,
+              state: searchBarTitle.title,
+            }}
           >
-            Search
-          </button>
+            <button
+              className="btn btn-outline-success my-2 my-sm-0"
+              type="submit"
+            >
+              Search
+            </button>
+          </Link>
         </form>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">

@@ -13,6 +13,7 @@ const EditPost = (props) => {
     imgSrc: "",
     comment: "",
   };
+  console.log(state);
 
   const [currentPost, setCurrentPost] = useState(initialPostState);
   const [message, setMessage] = useState("");

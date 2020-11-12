@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import PhotoDetails from "./components/PhotoDetails";
 import FileUpload from "./components/FileUpload";
 import Register from "./components/Register";
+import UserIndex from "./components/UserIndex";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/PostRequest" component={PostRequest} />
         <Route path="/GetRequest" component={GetRequest} />
         <Route path="/FileUpload" component={FileUpload} />
+        <Route path="/UserIndex" component={UserIndex} />
         {/* <Footer /> */}
       </div>
     </Router>

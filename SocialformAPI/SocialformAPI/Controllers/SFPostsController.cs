@@ -21,6 +21,15 @@ namespace SocialformAPI.Controllers
             _context = context;
         }
 
+        // GET: api/SFPosts/Name
+        [HttpGet("ByName/{id}")]
+        public async Task<ActionResult<IEnumerable<SFPost>>> GetSFPostsByName(string id)
+        {
+            var sfPosts = _context.SFPosts.Where(a => a.Title == id).ToList();
+
+            return sfPosts;
+        }
+
         // GET: api/SFPosts
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SFPost>>> GetSFPosts()

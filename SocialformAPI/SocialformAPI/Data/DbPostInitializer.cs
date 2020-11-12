@@ -48,38 +48,6 @@ namespace PostService.Data
                 context.SFPosts.Add(sfPost);
             }
             context.SaveChanges();
-
-            if (context.SFComments.Any())
-            {
-                return;
-            }
-
-            var sfCommentss = new SFComments[]
-            {
-                new SFComments
-                {
-                    PostId=1,
-                    UserId=1,
-                    Comment="Mooi man",
-                },
-                new SFComments
-                {
-                    PostId=1,
-                    UserId=2,
-                    Comment="Super mooi !",
-                },
-                new SFComments
-                {
-                    PostId=1,
-                    UserId=4,
-                    Comment="Daar zou ik ook wel eens willen zijn.",
-                },
-            };
-            foreach (SFComments sfComments in sfCommentss)
-            {
-                context.SFComments.Add(sfComments);
-            }
-            context.SaveChanges();
         }
     }
 }

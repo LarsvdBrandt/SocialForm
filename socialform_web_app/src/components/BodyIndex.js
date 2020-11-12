@@ -20,6 +20,7 @@ function BodyIndex() {
         console.log(e.message);
       });
   };
+
   return (
     <div className="row mt-4 justify-content-center">
       {posts &&
@@ -39,9 +40,18 @@ function BodyIndex() {
               />
 
               <div>
-                <h5 className="card-title font-weight-bold mb-2">
-                  {post.title}
-                </h5>
+                <Link
+                  to={{
+                    pathname: "/UserIndex/" + post.title,
+                    state: post.title,
+                  }}
+                  style={{ color: "black" }}
+                >
+                  <h5 className="card-title font-weight-bold mb-2">
+                    {post.title}
+                  </h5>
+                </Link>
+
                 <p className="card-text">
                   <i className="far fa-clock pr-2"></i>12/11/2020
                 </p>
