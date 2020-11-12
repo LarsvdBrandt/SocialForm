@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PostService from "../services/PostService";
 import { Link } from "react-router-dom";
-// import CardIndex from "./CardIndex";
+import ProfilePic from "../images/ProfileImage.png";
 
 function BodyIndex() {
   const [posts, setPosts] = useState([]);
@@ -25,13 +25,13 @@ function BodyIndex() {
       {posts &&
         posts.map((post, index) => (
           <div
-            className="card promoting-card"
-            style={{ maxWidth: "300px" }}
+            className="card promoting-card ml-1 mb-1"
+            style={{ maxWidth: "270px" }}
             key={post.id}
           >
             <div className="card-body d-flex flex-row">
               <img
-                src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg"
+                src={ProfilePic}
                 className="rounded-circle mr-3"
                 height="50px"
                 width="50px"
@@ -39,9 +39,9 @@ function BodyIndex() {
               />
 
               <div>
-                <h4 className="card-title font-weight-bold mb-2">
+                <h5 className="card-title font-weight-bold mb-2">
                   {post.title}
-                </h4>
+                </h5>
                 <p className="card-text">
                   <i className="far fa-clock pr-2"></i>12/11/2020
                 </p>
@@ -61,25 +61,6 @@ function BodyIndex() {
                   alt={post.imgSrc}
                 />
               </Link>
-            </div>
-
-            <div className="card-body">
-              <div className="collapse-content" id={post.id}>
-                <p className="card-text collapse" id="collapseContent">
-                  {post.comment}
-                </p>
-
-                <a
-                  className="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed"
-                  data-toggle="collapse"
-                  href="#collapseContent"
-                  aria-expanded="false"
-                  aria-controls="collapseContent"
-                  id={post.id}
-                >
-                  <p className="text-primary">View comment</p>
-                </a>
-              </div>
             </div>
           </div>
         ))}
