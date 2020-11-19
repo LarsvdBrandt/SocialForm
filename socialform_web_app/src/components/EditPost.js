@@ -64,7 +64,7 @@ const EditPost = (props) => {
       .then((response) => {
         setCurrentPost({ ...currentPost, published: status });
         console.log(response.data);
-        setMessage("update successful");
+        console.log("update successful");
       })
       .catch((e) => {
         console.log(e);
@@ -75,6 +75,7 @@ const EditPost = (props) => {
     PostService.update(currentPost.id, currentPost)
       .then((response) => {
         console.log(response.data);
+        history.push("/");
       })
       .catch((e) => {
         console.log(e);

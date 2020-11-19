@@ -1,18 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PostService from "../services/PostService";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ProfilePic from "../images/ProfileImage.png";
-import { post } from "jquery";
 
 function UserIndex(props) {
-  const history = useHistory();
   const { state } = useLocation();
 
   const [posts, setPosts] = useState("");
   const [postsCount, setPostsCount] = useState("");
+  const [randomFollowers, setRandomFollowers] = useState();
+  const [randomFollowing, setRandomFollowing] = useState();
 
   const retrievePosts = () => {
     PostService.getAllByName(state)
@@ -28,6 +26,13 @@ function UserIndex(props) {
 
   useEffect(() => {
     retrievePosts();
+
+    var maxNumber = 1000;
+    var randomNumberFollowers = Math.floor(Math.random() * maxNumber + 1);
+    setRandomFollowers(randomNumberFollowers);
+
+    var randomNumberFollowing = Math.floor(Math.random() * maxNumber + 1);
+    setRandomFollowing(randomNumberFollowing);
   }, []);
 
   return (
@@ -41,7 +46,7 @@ function UserIndex(props) {
               width="130"
               className="rounded mb-2 img-thumbnail"
             />
-            <a href="#" className="btn btn-outline-dark btn-sm btn-block">
+            <a href="" className="btn btn-outline-dark btn-sm btn-block">
               Edit profile
             </a>
           </div>
@@ -65,14 +70,14 @@ function UserIndex(props) {
             </small>
           </li>
           <li className="list-inline-item">
-            <h5 className="font-weight-bold mb-0 d-block">163</h5>
+            <h5 className="font-weight-bold mb-0 d-block">{randomFollowers}</h5>
             <small className="text-muted">
               {" "}
               <i className="fas fa-user mr-1"></i>Followers
             </small>
           </li>
           <li className="list-inline-item">
-            <h5 className="font-weight-bold mb-0 d-block">180</h5>
+            <h5 className="font-weight-bold mb-0 d-block">{randomFollowing}</h5>
             <small className="text-muted">
               {" "}
               <i className="fas fa-user mr-1"></i>Following
@@ -83,7 +88,7 @@ function UserIndex(props) {
       <div className="row mt-4 justify-content-center">
         {posts &&
           posts.map((post, index) => (
-            <div className="ml-2 mb-1">
+            <div className="ml-1 mb-1" key={post.id}>
               <Link
                 to={{
                   pathname: "/PhotoDetails/" + post.id,

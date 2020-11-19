@@ -59,7 +59,7 @@ const PostsList = () => {
                 onClick={() => setActivePost(post, index)}
                 key={index}
               >
-                {post.title}
+                {post.title} : {post.id}
               </li>
             ))}
         </ul>

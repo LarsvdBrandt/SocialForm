@@ -6,6 +6,7 @@ import LikeService from "../services/LikeService";
 import xmark from "../images/x-mark.png";
 import LikeIcon from "../images/LikeIcon.jpg";
 import { Link } from "react-router-dom";
+import ProfilePic from "../images/ProfileImage.png";
 
 const PhotoDetails = (props) => {
   const { state } = useLocation();
@@ -141,7 +142,16 @@ const PhotoDetails = (props) => {
         <div className="col-lg-6">
           <div>
             <div className="row">
-              <div className="col-sm-9">
+              <div className="col-sm-2">
+                <img
+                  src={ProfilePic}
+                  className="rounded-circle mr-3"
+                  height="70px"
+                  width="70px"
+                  alt="avatar"
+                />
+              </div>
+              <div className="col-sm-7">
                 <Link
                   to={{
                     pathname: "/UserIndex/" + currentPost.title,
@@ -149,14 +159,17 @@ const PhotoDetails = (props) => {
                   }}
                   style={{ color: "black" }}
                 >
-                  <h5 className="card-title font-weight-bold mb-2">
+                  <h3 className="card-title font-weight-bold mb-2">
                     {currentPost.title}
-                  </h5>
+                  </h3>
                 </Link>
+                <p className="card-text">
+                  <i className="far fa-clock pr-2"></i>12/11/2020
+                </p>
               </div>
               <div className="col-sm-1">
                 <span onClick={() => addLike({ PostId: state })}>
-                  <img src={LikeIcon} style={{ height: "25px" }}></img>
+                  <img src={LikeIcon} style={{ height: "35px" }}></img>
                 </span>
               </div>
               <div className="col-sm-2">
