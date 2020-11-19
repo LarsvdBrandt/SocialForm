@@ -260,8 +260,10 @@ function MyVerticallyCenteredModal(props) {
 function BodyIndex() {
   const [posts, setPosts] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
+  const [modalId, setModalId] = useState("");
 
   const setModalShows = () => {
+    console.log(modalId);
     setModalShow(true);
   };
 
@@ -282,15 +284,14 @@ function BodyIndex() {
 
   return (
     <div className="row mt-4 justify-content-center">
-      <Button onClick={() => setModalShows(true)}>
-        Launch vertically centered modal
-      </Button>
-
-      <MyVerticallyCenteredModal
+      {/* <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
         id="1"
       />
+      <Button onClick={() => setModalShows()}>
+        Launch vertically centered modal
+      </Button> */}
       {posts &&
         posts.map((post, index) => (
           <div
