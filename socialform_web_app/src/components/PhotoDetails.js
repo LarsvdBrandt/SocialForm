@@ -136,7 +136,7 @@ const PhotoDetails = (props) => {
     const timer = setTimeout(() => {
       setPositive(true);
       console.log(positive);
-    }, 100);
+    }, 400);
     return () => clearTimeout(timer);
   }, []);
 

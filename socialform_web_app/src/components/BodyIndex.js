@@ -289,9 +289,9 @@ function BodyIndex() {
         onHide={() => setModalShow(false)}
         id="1"
       />
-      <Button onClick={() => setModalShows()}>
+      {/* <Button onClick={() => setModalShows()}>
         Launch vertically centered modal
-      </Button>
+      </Button> */}
       {posts &&
         posts.map((post, index) => (
           <div
