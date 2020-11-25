@@ -284,20 +284,21 @@ function BodyIndex() {
 
   return (
     <div className="row mt-4 justify-content-center">
-      {/* <MyVerticallyCenteredModal
+      <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
         id="1"
       />
       <Button onClick={() => setModalShows()}>
         Launch vertically centered modal
-      </Button> */}
+      </Button>
       {posts &&
         posts.map((post, index) => (
           <div
             className="card promoting-card ml-1 mb-1"
             style={{ width: "270px" }}
             key={post.id}
+            data-testid="card"
           >
             <div className="card-body d-flex flex-row">
               <img

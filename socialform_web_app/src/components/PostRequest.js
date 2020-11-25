@@ -71,6 +71,7 @@ const PostRequest = () => {
             type="text"
             name="title"
             onChange={handleChange}
+            data-testid="post-input-title"
             required
           />
         </div>
@@ -82,6 +83,7 @@ const PostRequest = () => {
             type="file"
             name="imgSrc"
             onChange={handleUpload}
+            data-testid="post-input-image"
             required
           />
           <label class="custom-file-label" for="customFile">
@@ -100,11 +102,16 @@ const PostRequest = () => {
             type="text"
             name="comment"
             onChange={handleChange}
+            data-testid="post-input-comment"
             required
           />
         </div>
         <br></br>
-        <button className="btn btn-primary" type="submit">
+        <button
+          className="btn btn-primary"
+          type="submit"
+          data-testid="post-input-submit"
+        >
           Submit
         </button>
       </form>
