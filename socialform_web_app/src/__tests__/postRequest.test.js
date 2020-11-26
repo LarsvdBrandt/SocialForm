@@ -14,7 +14,7 @@ import PostService from "../services/PostService";
 jest.mock("../services/PostService");
 
 describe("Post component tests", () => {
-  it.skip("Test if PostRequest component renders", () => {
+  it("Test if PostRequest component renders", () => {
     // expect.assertions(3);
 
     const mockFn = PostService.create.mockImplementation((data) => {

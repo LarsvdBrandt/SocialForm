@@ -11,8 +11,6 @@ import EditPost from "../components/EditPost";
 import React from "react";
 import MockImage from "../uploads/test1.jpg";
 import PostService from "../services/PostService";
-
-//put in setupTests.js file in root folder
 import "@testing-library/jest-dom/extend-expect";
 
 jest.mock("../services/PostService");

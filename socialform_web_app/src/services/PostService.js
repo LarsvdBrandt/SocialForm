@@ -1,7 +1,7 @@
-import http from "../common-api";
+// import http from "../common-api";
 
 //comment out when testing
-// import http from "axios";
+import http from "axios";
 
 const BaseUri = "/PostService/SFPosts";
 

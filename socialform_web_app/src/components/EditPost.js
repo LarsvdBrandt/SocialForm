@@ -161,7 +161,7 @@ const EditPost = (props) => {
                 className="form-control"
                 id="comment"
                 name="comment"
-                data-testid="post-input-image"
+                data-testid="post-input-comment"
                 value={currentPost.comment}
                 onChange={handleInputChange}
               />
