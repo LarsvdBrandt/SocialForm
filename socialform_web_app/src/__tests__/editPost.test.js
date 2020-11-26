@@ -4,24 +4,43 @@ import {
   screen,
   waitFor,
   fireEvent,
+  waitForElement,
 } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import PostRequest from "../components/PostRequest";
+import EditPost from "../components/EditPost";
 import React from "react";
 import MockImage from "../uploads/test1.jpg";
 import PostService from "../services/PostService";
 
+//put in setupTests.js file in root folder
+import "@testing-library/jest-dom/extend-expect";
+
 jest.mock("../services/PostService");
 
-describe("Post component tests", () => {
-  it.skip("Test if PostRequest component renders", () => {
+describe("Edit Post component tests", () => {
+  it.only("Test if EditPost component renders", async () => {
     // expect.assertions(3);
 
-    const mockFn = PostService.create.mockImplementation((data) => {
+    const mockFn = PostService.get.mockImplementation((data) => {
       console.log(data);
+      return {
+        data: {
+          title: "Lars",
+          imgSrc: "test.jpg",
+          comment: "testcomment",
+        },
+      };
     });
 
-    render(<PostRequest />);
+    render(
+      <MemoryRouter initialEntries={["/EditPost/1"]}>
+        <EditPost match={{ params: { id: 1 } }} />
+      </MemoryRouter>
+    );
+
+    await waitFor(() =>
+      expect(screen.getByTestId("post-input-title")).toBeInTheDocument()
+    );
 
     const inputTitle = screen.getByTestId("post-input-title");
     fireEvent.change(inputTitle, { target: { value: "Lars van den Brandt" } });

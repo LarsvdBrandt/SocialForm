@@ -1,4 +1,5 @@
-import http from "../common-api";
+// import http from "../common-api";
+import http from "axios";
 
 const BaseUri = "/PostService/SFPosts";
 

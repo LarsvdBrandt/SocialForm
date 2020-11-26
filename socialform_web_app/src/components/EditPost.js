@@ -24,15 +24,13 @@ const EditPost = (props) => {
   const [progress, setProgess] = useState(0); // progess bar
   const el = useRef(); // accesing input element
 
-  const getPost = (id) => {
-    PostService.get(state)
-      .then((response) => {
-        setCurrentPost(response.data);
-        console.log(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  const getPost = async (id) => {
+    let apiResponse = await PostService.get(state);
+    setCurrentPost(apiResponse.data);
+    console.log(apiResponse.data);
+    // .catch((e) => {
+    //   console.log(e);
+    // });
   };
 
   useEffect(() => {
@@ -126,6 +124,7 @@ const EditPost = (props) => {
                 className="form-control"
                 id="title"
                 name="title"
+                data-testid="post-input-title"
                 value={currentPost.title}
                 onChange={handleInputChange}
               />
@@ -138,6 +137,7 @@ const EditPost = (props) => {
                 id="imgSrc"
                 name="imgSrc"
                 value={currentPost.imgSrc}
+                data-testid="post-input-image"
                 hidden
               />
             </div>
@@ -161,6 +161,7 @@ const EditPost = (props) => {
                 className="form-control"
                 id="comment"
                 name="comment"
+                data-testid="post-input-image"
                 value={currentPost.comment}
                 onChange={handleInputChange}
               />

@@ -97,9 +97,13 @@
 
 /* Photodetails */
 .photodetailsImg {
-  height: 340px;
+  height: auto;
   width: 100%;
   border-radius: 6px;
+}
+.photocontainerImg {
+  height: 340px;
+  overflow-y: hidden;
 }
 
 .pb-cmnt-container {

@@ -41,7 +41,7 @@ import BodyIndex from "../components/BodyIndex";
 // afterAll(() => server.close());
 
 // describe("<BodyIndex />", () => {
-test("fetches posts from an API and displays them", async () => {
+test.skip("fetches posts from an API and displays them", async () => {
   // const { container } = render(<BodyIndex />);
   // await waitForElement(() => screen.getByTestId("card"));
   // expect(container).toMatchSnapshot();
