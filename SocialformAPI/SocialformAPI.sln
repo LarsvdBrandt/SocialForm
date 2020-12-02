@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LikeService", "LikeService\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentService", "CommentService\CommentService.csproj", "{5486D0E6-642E-4004-B87A-14B9671F5C88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageApi", "ImageApi\ImageApi.csproj", "{B7A8309D-766E-43C6-890E-6BE32CA6F668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageApi", "ImageApi\ImageApi.csproj", "{B7A8309D-766E-43C6-890E-6BE32CA6F668}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostService.Tests", "PostService.Tests\PostService.Tests.csproj", "{9B9C8A27-F254-4D57-A94B-C2A329016265}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{B7A8309D-766E-43C6-890E-6BE32CA6F668}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7A8309D-766E-43C6-890E-6BE32CA6F668}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7A8309D-766E-43C6-890E-6BE32CA6F668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B9C8A27-F254-4D57-A94B-C2A329016265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B9C8A27-F254-4D57-A94B-C2A329016265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B9C8A27-F254-4D57-A94B-C2A329016265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B9C8A27-F254-4D57-A94B-C2A329016265}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
