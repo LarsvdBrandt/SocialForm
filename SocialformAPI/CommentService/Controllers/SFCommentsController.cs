@@ -6,9 +6,9 @@ using CommentService.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SocialformAPI.Models;
+using CommentService.Models;
 
-namespace SocialformAPI.Controllers
+namespace CommentService.Controllers
 {
     [Route("[controller]")]
     [ApiController]

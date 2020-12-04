@@ -1,4 +1,4 @@
-﻿using SocialformAPI.Models;
+﻿using CommentService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostService", "SocialformAPI\PostService.csproj", "{267DC852-872E-4868-A44F-19D32531BB2D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "APIGateway\APIGateway.csproj", "{7DCC9C65-9830-4AB5-8AA9-563F9231C226}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LikeService", "LikeService\LikeService.csproj", "{2C1ED1EA-AC45-4477-BE00-1BC0F6BE7132}"
@@ -13,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentService", "CommentSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageApi", "ImageApi\ImageApi.csproj", "{B7A8309D-766E-43C6-890E-6BE32CA6F668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostServiceTests", "PostServiceTests\PostServiceTests.csproj", "{91870F4C-5689-41D5-88F3-7D3FE354A353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostServiceTests", "PostServiceTests\PostServiceTests.csproj", "{91870F4C-5689-41D5-88F3-7D3FE354A353}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostService", "PostService\PostService.csproj", "{2E17D874-5B1A-48F8-97D6-BBAFE71A0DAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{267DC852-872E-4868-A44F-19D32531BB2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{267DC852-872E-4868-A44F-19D32531BB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{267DC852-872E-4868-A44F-19D32531BB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{267DC852-872E-4868-A44F-19D32531BB2D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7DCC9C65-9830-4AB5-8AA9-563F9231C226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7DCC9C65-9830-4AB5-8AA9-563F9231C226}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DCC9C65-9830-4AB5-8AA9-563F9231C226}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{91870F4C-5689-41D5-88F3-7D3FE354A353}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91870F4C-5689-41D5-88F3-7D3FE354A353}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91870F4C-5689-41D5-88F3-7D3FE354A353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E17D874-5B1A-48F8-97D6-BBAFE71A0DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E17D874-5B1A-48F8-97D6-BBAFE71A0DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E17D874-5B1A-48F8-97D6-BBAFE71A0DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E17D874-5B1A-48F8-97D6-BBAFE71A0DAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

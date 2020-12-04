@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialformAPI.Models
+namespace CommentService.Models
 {
     public class SFComments
     {

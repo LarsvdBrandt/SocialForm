@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using LikeService.Models;
 using Microsoft.EntityFrameworkCore;
-using PostService.Models;
 
 namespace LikeService.Data
 {
