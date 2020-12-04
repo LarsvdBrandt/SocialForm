@@ -89,6 +89,7 @@ namespace PostServiceTests
 
 
             response.StatusCode.Should().Be(HttpStatusCode.Created);
+
         }
     }
 }
