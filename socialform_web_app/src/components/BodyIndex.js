@@ -337,7 +337,7 @@ function BodyIndex() {
               >
                 <img
                   className="card-img-top rounded-0 card-image-index"
-                  src={require("../uploads/" + post.imgSrc)}
+                  src={require("../uploads/test1.jpg")}
                   alt={post.imgSrc}
                 />
               </Link>

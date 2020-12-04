@@ -1,6 +1,6 @@
 ﻿
 using LikeService.Models;
-using SocialformAPI.Models;
+using PostService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -9,7 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PostService.Data;
 
-namespace SocialformAPI
+namespace PostService
 {
     public class Program
     {

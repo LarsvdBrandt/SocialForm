@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialformAPI.Models
+namespace PostService.Models
 {
     public class SFPost
     {
