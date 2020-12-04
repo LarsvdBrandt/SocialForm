@@ -35,7 +35,7 @@ jobs:
       working-directory: socialform_web_app
     - run: npm run build --if-present
       env: 
-        ci: false
+        CI: false
       working-directory: socialform_web_app
     - run: npm test a
       working-directory: socialform_web_app
