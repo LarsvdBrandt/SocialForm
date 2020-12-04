@@ -31,12 +31,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Clean install
-      run: |
-        cd socialform_web_app
-        npm ci
-    - run: |
-        cd socialform_web_app
-        npm run build --if-present
-    - run: |
-        cd socialform_web_app
-        npm test a
+      run: npm ci
+      working-directory: socialform_web_app
+    - run: npm run build --if-present
+      working-directory: socialform_web_app
+    - run: npm test a
+      working-directory: socialform_web_app
