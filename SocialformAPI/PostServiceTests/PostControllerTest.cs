@@ -28,6 +28,8 @@ namespace PostServiceTests
 
         }
 
+        //get
+
         [Fact]
         public async Task Get_Request_Should_Return_Ok_All()
         {
@@ -52,6 +54,8 @@ namespace PostServiceTests
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
+        //delete
+
         [Fact]
         public async Task Delete_Request_By_ID()
         {
@@ -59,6 +63,16 @@ namespace PostServiceTests
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
+
+        [Fact]
+        public async Task Delete_Request_By_Wrong_ID()
+        {
+            var response = await _client.DeleteAsync("/SFPosts/7");
+
+            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        }
+
+        //post
 
         [Fact]
         public async Task Post_Succeed()
