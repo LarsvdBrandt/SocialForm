@@ -49,7 +49,7 @@ namespace PostServiceTests
         [Fact]
         public async Task Get_Request_By_Wrong_ID()
         {
-            var response = await _client.GetAsync("/SFPosts/5");
+            var response = await _client.GetAsync("/SFPosts/20");
 
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
@@ -89,6 +89,44 @@ namespace PostServiceTests
 
 
             response.StatusCode.Should().Be(HttpStatusCode.Created);
+
+        }
+
+        //Edit
+
+        [Fact]
+        public async Task Edit_Succeed()
+        {
+
+            var response = await _client.PutAsync("/SFPosts/1", new StringContent(JsonConvert.SerializeObject(new SFPost()
+            {
+                id = 1,
+                Title = "How to  scallops",
+                ImgSrc = "Test.jpg",
+                Comment = "Test1",
+
+            }), Encoding.UTF8, "application/json"));
+
+
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+
+        }
+
+        [Fact]
+        public async Task Edit_Fail_Wrong_ID()
+        {
+
+            var response = await _client.PutAsync("/SFPosts/9", new StringContent(JsonConvert.SerializeObject(new SFPost()
+            {
+                id = 9,
+                Title = "How to  scallops",
+                ImgSrc = "Test.jpg",
+                Comment = "Test1",
+
+            }), Encoding.UTF8, "application/json"));
+
+
+            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
 
         }
     }
