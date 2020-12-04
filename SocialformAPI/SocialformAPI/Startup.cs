@@ -11,10 +11,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using SocialformAPI.Models;
+using PostService.Models;
 using PostService.Data;
 
-namespace SocialformAPI
+namespace PostService
 {
     public class Startup
     {

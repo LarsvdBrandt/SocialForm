@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PostService.Data;
-using SocialformAPI.Models;
+using PostService.Models;
 
-namespace SocialformAPI.Controllers
+namespace PostService.Controllers
 {
     [Route("[controller]")]
     [ApiController]
