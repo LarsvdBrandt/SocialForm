@@ -64,7 +64,7 @@ const PostRequest = () => {
       <h2>Post test</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label for="title">Gebruiker </label>
+          <label for="title">Gebruiker</label>
           <input
             className="form-control"
             placeholder="User"
