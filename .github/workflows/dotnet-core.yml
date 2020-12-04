@@ -44,4 +44,4 @@ jobs:
     - name: Test
       run: |
         cd SocialformAPI
-        dotnet test --no-restore --verbosity normal PostServiceTests
+        dotnet test PostServiceTests
