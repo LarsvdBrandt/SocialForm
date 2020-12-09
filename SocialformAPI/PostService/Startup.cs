@@ -29,7 +29,7 @@ namespace PostService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SFPostContext>(options =>
-   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+   options.UseInMemoryDatabase("PostServiceDatabase"));
             services.AddControllers();
             services.AddCors();
         }
@@ -46,7 +46,7 @@ namespace PostService
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

@@ -143,7 +143,7 @@ function MyVerticallyCenteredModal(props) {
           <Col md={6}>
             <img
               className="photodetailsImg"
-              src={require("../uploads/" + "among-us-1.jpg")}
+              src={require("../uploads/test1.jpg")}
               alt={"http://localhost:3000/src/uploads/" + currentPost.imgSrc}
             />
 
@@ -192,7 +192,7 @@ function MyVerticallyCenteredModal(props) {
 
               {comments &&
                 comments.map((comment, index) => (
-                  <div>
+                  <div data-testid="bodyindex-card-tester">
                     <div className="row">
                       <div className="col-sm-1">
                         <span

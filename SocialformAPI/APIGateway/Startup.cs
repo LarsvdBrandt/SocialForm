@@ -39,8 +39,10 @@ namespace APIGateway
             {
                 app.UseDeveloperExceptionPage();
             }
+            //note: re-enable cors when deployed.
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

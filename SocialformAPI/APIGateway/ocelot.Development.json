@@ -5,8 +5,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5001
+          "Host": "postservice",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/PostService/{CatchAll}"
@@ -16,8 +16,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5002
+          "Host": "likeservice",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/LikeService/{CatchAll}"
@@ -27,8 +27,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5003
+          "Host": "commentservice",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/CommentService/{CatchAll}"

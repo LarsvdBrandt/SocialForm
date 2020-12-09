@@ -28,7 +28,7 @@ namespace LikeService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SFLikeContext>(options =>
-   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+   options.UseInMemoryDatabase("LikeServiceDatabase"));
             services.AddControllers();
             services.AddCors();
         }
@@ -45,7 +45,7 @@ namespace LikeService
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

@@ -28,7 +28,7 @@ namespace CommentService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SFCommentContext>(options =>
-   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+   options.UseInMemoryDatabase("CommentServiceDatabase"));
             services.AddControllers();
             services.AddCors();
         }
@@ -45,7 +45,7 @@ namespace CommentService
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
