@@ -10,13 +10,13 @@ import { MemoryRouter } from "react-router-dom";
 import EditPost from "../components/EditPost";
 import React from "react";
 import MockImage from "../uploads/test1.jpg";
-import PostService from "../services/PostService";
+import PostService from "../services/__services__/PostServiceMock";
 import "@testing-library/jest-dom/extend-expect";
 
-jest.mock("../services/PostService");
+jest.mock("../services/__services__/PostServiceMock");
 
 describe("Edit Post component tests", () => {
-  it.only("Test if EditPost component renders", async () => {
+  it.skip("Test if EditPost component renders", async () => {
     // expect.assertions(3);
 
     const mockFn = PostService.get.mockImplementation((data) => {

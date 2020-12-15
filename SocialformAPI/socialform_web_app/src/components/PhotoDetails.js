@@ -156,6 +156,7 @@ const PhotoDetails = (props) => {
               <div className="row">
                 <div className="col-sm-2">
                   <img
+                    data-testid="ProfilePic-PhotDetails"
                     src={ProfilePic}
                     className="rounded-circle mr-3"
                     height="70px"
@@ -265,7 +266,7 @@ const PhotoDetails = (props) => {
             <div className="photocontainerImg">
               <img
                 className="photodetailsImg"
-                src={require("../uploads/" + currentPost.imgSrc)}
+                src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
                 alt={"http://localhost:3000/src/uploads/" + currentPost.imgSrc}
               />
             </div>

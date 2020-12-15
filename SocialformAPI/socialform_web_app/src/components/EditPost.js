@@ -13,7 +13,7 @@ const EditPost = (props) => {
     imgSrc: "",
     comment: "",
   };
-  console.log(state);
+  //console.log(state);
 
   const [currentPost, setCurrentPost] = useState(initialPostState);
   const [message, setMessage] = useState("");
@@ -45,7 +45,6 @@ const EditPost = (props) => {
   const handleUpload = (e) => {
     setProgess(0);
     const file = e.target.files[0]; // accessing file
-    console.log(file);
     setFile(file); // storing file
     setCurrentPost({ ...currentPost, [e.target.name]: e.target.files[0].name });
   };
@@ -61,7 +60,6 @@ const EditPost = (props) => {
     PostService.update(currentPost.id, data)
       .then((response) => {
         setCurrentPost({ ...currentPost, published: status });
-        console.log(response.data);
         console.log("update successful");
       })
       .catch((e) => {

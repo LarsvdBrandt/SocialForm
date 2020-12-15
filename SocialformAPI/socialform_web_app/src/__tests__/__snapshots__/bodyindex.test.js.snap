@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`fetches posts from an API and displays them 1`] = `
-<div>
-  <div
-    class="row mt-4 justify-content-center"
-  />
-</div>
-`;
