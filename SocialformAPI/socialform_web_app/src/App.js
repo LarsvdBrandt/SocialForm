@@ -26,7 +26,7 @@ function App() {
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
         <Route path="/EditPost" component={EditPost} />
-        <Route path="/PhotoDetails" component={PhotoDetails} />
+        <Route path="/PhotoDetails/:photoid" component={PhotoDetails} />
         <Route path="/PostRequest" component={PostRequest} />
         <Route path="/GetRequest" component={GetRequest} />
         <Route path="/FileUpload" component={FileUpload} />

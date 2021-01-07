@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useRouteMatch } from "react-router-dom";
 import PostService from "../services/PostService";
 import CommentService from "../services/CommentService";
 import LikeService from "../services/LikeService";
@@ -10,7 +10,10 @@ import ProfilePic from "../images/ProfileImage.png";
 import Loading from "../images/giphy.gif";
 
 const PhotoDetails = (props) => {
-  const { state } = useLocation();
+  // const { state } = useLocation();
+  const location = useLocation();
+  let match = useRouteMatch("/PhotoDetails/:photoid");
+  let state = match.params.photoid;
   const initialPostState = {
     id: null,
     title: "",

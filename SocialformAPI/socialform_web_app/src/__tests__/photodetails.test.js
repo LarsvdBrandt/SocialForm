@@ -21,7 +21,7 @@ describe("Photodetails component tests", () => {
 
     render(
       <MemoryRouter initialEntries={["/PhotoDetails/1"]}>
-        <PhotoDetails state={{ id: 1 }} />
+        <PhotoDetails />
       </MemoryRouter>
     );
 
