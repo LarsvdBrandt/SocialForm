@@ -45,7 +45,7 @@ const PostRequest = () => {
       .then((res) => {
         console.log("succes");
 
-        history.push("/");
+        // history.push("/");
       })
       .catch((err) => console.log(err));
   };

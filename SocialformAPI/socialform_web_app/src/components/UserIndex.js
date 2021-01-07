@@ -96,8 +96,8 @@ function UserIndex(props) {
                 }}
               >
                 <img
-                  src={require("../uploads/" + post.imgSrc)}
-                  alt="Image"
+                  src={"http://localhost:5000/imageapi/images/" + post.imgSrc}
+                  alt={post.imgSrc}
                   className="UserIndexPhotos"
                 />
               </Link>

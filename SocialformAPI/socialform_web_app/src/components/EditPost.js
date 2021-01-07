@@ -19,18 +19,11 @@ const EditPost = (props) => {
   const [message, setMessage] = useState("");
 
   const [file, setFile] = useState(""); // storing the uploaded file
-  // storing the recived file from backend
-  const [data, getFile] = useState({ name: "", path: "" });
-  const [progress, setProgess] = useState(0); // progess bar
-  const el = useRef(); // accesing input element
 
   const getPost = async (id) => {
     let apiResponse = await PostService.get(state);
     setCurrentPost(apiResponse.data);
     console.log(apiResponse.data);
-    // .catch((e) => {
-    //   console.log(e);
-    // });
   };
 
   useEffect(() => {
@@ -43,31 +36,26 @@ const EditPost = (props) => {
   };
 
   const handleUpload = (e) => {
-    setProgess(0);
     const file = e.target.files[0]; // accessing file
+    console.log(file);
     setFile(file); // storing file
     setCurrentPost({ ...currentPost, [e.target.name]: e.target.files[0].name });
   };
 
-  const updatePublished = (status) => {
-    var data = {
-      id: currentPost.id,
-      title: currentPost.title,
-      imgSrc: currentPost.imgSrc,
-      comment: currentPost.comment,
-    };
-
-    PostService.update(currentPost.id, data)
-      .then((response) => {
-        setCurrentPost({ ...currentPost, published: status });
-        console.log("update successful");
+  const updatePost = async (event) => {
+    event.preventDefault();
+    console.log(file);
+    const formData = new FormData();
+    formData.append("formFile", file); // appending file
+    formData.append("fileName", currentPost.imgSrc); // appending fileName
+    console.log(formData);
+    axios
+      .post("http://localhost:5000/ImageApi/File", formData)
+      .then((res) => {
+        console.log("succes");
       })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+      .catch((err) => console.log(err));
 
-  const updatePost = () => {
     PostService.update(currentPost.id, currentPost)
       .then((response) => {
         console.log(response.data);
@@ -76,18 +64,6 @@ const EditPost = (props) => {
       .catch((e) => {
         console.log(e);
       });
-
-    const formData = new FormData();
-    formData.append("file", file); // appending file
-    formData.append("fileName", currentPost.imgSrc); // appending fileName
-    axios
-      .post("http://localhost:5000/ImageApi/File", formData)
-      .then((res) => {
-        console.log("succes");
-
-        history.push("/");
-      })
-      .catch((err) => console.log(err));
   };
 
   const deletePost = () => {
