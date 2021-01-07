@@ -32,6 +32,17 @@
         }
       ],
       "UpstreamPathTemplate": "/CommentService/{CatchAll}"
+    },
+    {
+      "DownstreamPathTemplate": "/{CatchAll}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "imageapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/ImageApi/{CatchAll}"
     }
   ],
   "GlobalConfiguration": {

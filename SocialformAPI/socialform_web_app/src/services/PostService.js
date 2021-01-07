@@ -1,8 +1,5 @@
 import http from "../common-api";
 
-//comment out when testing
-// import http from "axios";
-
 const BaseUri = "/PostService/SFPosts";
 
 const getAll = () => http.get(BaseUri);

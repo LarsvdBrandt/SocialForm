@@ -12,18 +12,14 @@ namespace ImageApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FileUploadController : ControllerBase
+    public class FileController : ControllerBase
     {
-
-        // POST: api/FileUpload
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public ActionResult Post([FromForm] FileModel file)
         {
             try
             {
-                string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UploadImages", file.FileName);
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "UploadImages", file.FileName);
 
                 using (Stream stream = new FileStream(path, FileMode.Create))
                 {
@@ -35,6 +31,13 @@ namespace ImageApi.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
+        }
+
+        // GET: api/SFPosts
+        [HttpGet]
+        public string Get()
+        {
+            return "Welcome To Web API";
         }
     }
 }

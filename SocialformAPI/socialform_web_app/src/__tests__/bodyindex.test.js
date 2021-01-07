@@ -22,3 +22,4 @@ describe("BodyIndex", () => {
     expect(header).toBeInTheDocument();
   });
 });
+});

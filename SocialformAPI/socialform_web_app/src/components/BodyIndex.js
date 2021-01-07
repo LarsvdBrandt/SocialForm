@@ -205,8 +205,12 @@ function BodyIndex() {
               >
                 <img
                   className="card-img-top rounded-0 card-image-index"
-                  src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
-                  alt={post.imgSrc}
+                  src={
+                    post.imgSrc != null
+                      ? "http://localhost:5000/imageapi/images/" + post.imgSrc
+                      : "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
+                  }
+                  alt="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
                 />
               </Link>
             </div>

@@ -7,10 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\UploadImages\" />
+    <Content Include="UploadImages\IMG_0530.jpg" />
+    <Content Include="UploadImages\IMG_0531.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="UploadImages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
   </ItemGroup>
 
