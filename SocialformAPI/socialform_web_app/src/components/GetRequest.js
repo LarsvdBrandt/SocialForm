@@ -80,7 +80,9 @@ const PostsList = () => {
               </label>{" "}
               <img
                 className="card-image-index"
-                src={require("../uploads/" + currentPost.imgSrc)}
+                src={
+                  "http://localhost:5000/imageapi/images/" + currentPost.imgSrc
+                }
                 alt={currentPost.imgSrc}
               />
             </div>

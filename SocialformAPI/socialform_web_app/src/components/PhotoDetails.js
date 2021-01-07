@@ -133,251 +133,123 @@ const PhotoDetails = (props) => {
     //   console.log(props.match.params.id);
     // }
     getPost();
-    const timer = setTimeout(() => {
-      setPositive(true);
-      console.log(positive);
-    }, 400);
-    return () => clearTimeout(timer);
   }, []);
 
-  if (positive === false) {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6">
-            <img
-              className="photodetailsImg"
-              src={Loading}
-              alt={"http://localhost:3000/src/uploads/" + currentPost.imgSrc}
-            />
-          </div>
-          <div className="col-lg-6">
-            <div>
-              <div className="row">
-                <div className="col-sm-2">
-                  <img
-                    data-testid="ProfilePic-PhotDetails"
-                    src={ProfilePic}
-                    className="rounded-circle mr-3"
-                    height="70px"
-                    width="70px"
-                    alt="avatar"
-                  />
-                </div>
-                <div className="col-sm-7">
-                  <Link
-                    to={{
-                      pathname: "/UserIndex/" + currentPost.title,
-                      state: currentPost.title,
-                    }}
-                    style={{ color: "black" }}
-                  >
-                    <h3 className="card-title font-weight-bold mb-2">
-                      {currentPost.title}
-                    </h3>
-                  </Link>
-                  <p className="card-text">
-                    <i className="far fa-clock pr-2"></i>12/11/2020
-                  </p>
-                </div>
-                <div className="col-sm-1">
-                  <span onClick={() => addLike({ PostId: state })}>
-                    <img src={LikeIcon} style={{ height: "35px" }}></img>
-                  </span>
-                </div>
-                <div className="col-sm-2">
-                  <h3>{likes}</h3>
-                </div>
-              </div>
-            </div>
-            <div className="card card-info photodetailscommentcontainer  scrollbar">
-              <div>
-                <h6 className="card-block-fixed">{currentPost.comment}</h6>
-                <hr></hr>
-              </div>
-
-              {comments &&
-                comments.map((comment, index) => (
-                  <div>
-                    <div className="row">
-                      <div className="col-sm-1">
-                        <span
-                          onClick={() =>
-                            removeComment({ id: comment.commentId })
-                          }
-                        >
-                          <img src={xmark} style={{ height: "10px" }}></img>
-                        </span>
-                      </div>
-                      <div className="col-sm-11">
-                        <p>{comment.comment}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-lg-6">
+          <img
+            className="photodetailsImg"
+            src={"http://localhost:5000/imageapi/images/" + currentPost.imgSrc}
+            alt={currentPost.imgSrc}
+          />
+        </div>
+        <div className="col-lg-6">
+          <div>
             <div className="row">
-              <div className="pb-cmnt-container col-sm-10">
-                <div className="photodetailscommentcontainer">
-                  <div className="card card-info">
-                    <div className="card-block">
-                      <form onSubmit={handleSubmit}>
-                        <div>
-                          <input
-                            className="pb-cmnt-textarea"
-                            placeholder="Write your comment here!"
-                            type="text"
-                            name="comment"
-                            onChange={handleChange}
-                            required
-                          />
-                        </div>
-                        <button
-                          className="btn btn-outline-success my-2 my-sm-0"
-                          style={{ width: "100%" }}
-                          type="submit"
-                        >
-                          Comment
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+              <div className="col-sm-2">
+                <img
+                  data-testid="ProfilePic-PhotDetails"
+                  src={ProfilePic}
+                  className="rounded-circle mr-3"
+                  height="70px"
+                  width="70px"
+                  alt="avatar"
+                />
               </div>
-
-              <div className="pb-cmnt-container col-sm-2 likecontainer">
-                <span onClick={addLike}>
-                  <img
-                    src={LikeIcon}
-                    style={{ height: "60px", border: "0px" }}
-                  ></img>
+              <div className="col-sm-7">
+                <Link
+                  to={{
+                    pathname: "/UserIndex/" + currentPost.title,
+                    state: currentPost.title,
+                  }}
+                  style={{ color: "black" }}
+                >
+                  <h3 className="card-title font-weight-bold mb-2">
+                    {currentPost.title}
+                  </h3>
+                </Link>
+                <p className="card-text">
+                  <i className="far fa-clock pr-2"></i>12/11/2020
+                </p>
+              </div>
+              <div className="col-sm-1">
+                <span onClick={() => addLike({ PostId: state })}>
+                  <img src={LikeIcon} style={{ height: "35px" }}></img>
                 </span>
               </div>
+              <div className="col-sm-2">
+                <h3>{likes}</h3>
+              </div>
+            </div>
+          </div>
+          <div className="card card-info photodetailscommentcontainer  scrollbar">
+            <div>
+              <h6 className="card-block-fixed">{currentPost.comment}</h6>
+              <hr></hr>
+            </div>
+
+            {comments &&
+              comments.map((comment, index) => (
+                <div>
+                  <div className="row">
+                    <div className="col-sm-1">
+                      <span
+                        onClick={() => removeComment({ id: comment.commentId })}
+                      >
+                        <img src={xmark} style={{ height: "10px" }}></img>
+                      </span>
+                    </div>
+                    <div className="col-sm-11">
+                      <p>{comment.comment}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+          <div className="row">
+            <div className="pb-cmnt-container col-sm-10">
+              <div className="photodetailscommentcontainer">
+                <div className="card card-info">
+                  <div className="card-block">
+                    <form onSubmit={handleSubmit}>
+                      <div>
+                        <input
+                          className="pb-cmnt-textarea"
+                          placeholder="Write your comment here!"
+                          type="text"
+                          name="comment"
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <button
+                        className="btn btn-outline-success my-2 my-sm-0"
+                        style={{ width: "100%" }}
+                        type="submit"
+                      >
+                        Comment
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pb-cmnt-container col-sm-2 likecontainer">
+              <span onClick={addLike}>
+                <img
+                  src={LikeIcon}
+                  style={{ height: "60px", border: "0px" }}
+                ></img>
+              </span>
             </div>
           </div>
         </div>
       </div>
-    );
-  } else {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6">
-            <div className="photocontainerImg">
-              <img
-                className="photodetailsImg"
-                src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
-                alt={"http://localhost:3000/src/uploads/" + currentPost.imgSrc}
-              />
-            </div>
-          </div>
-          <div className="col-lg-6">
-            <div>
-              <div className="row">
-                <div className="col-sm-2">
-                  <img
-                    src={ProfilePic}
-                    className="rounded-circle mr-3"
-                    height="70px"
-                    width="70px"
-                    alt="avatar"
-                  />
-                </div>
-                <div className="col-sm-7">
-                  <Link
-                    to={{
-                      pathname: "/UserIndex/" + currentPost.title,
-                      state: currentPost.title,
-                    }}
-                    style={{ color: "black" }}
-                  >
-                    <h3 className="card-title font-weight-bold mb-2">
-                      {currentPost.title}
-                    </h3>
-                  </Link>
-                  <p className="card-text">
-                    <i className="far fa-clock pr-2"></i>12/11/2020
-                  </p>
-                </div>
-                <div className="col-sm-1">
-                  <span onClick={() => addLike({ PostId: state })}>
-                    <img src={LikeIcon} style={{ height: "35px" }}></img>
-                  </span>
-                </div>
-                <div className="col-sm-2">
-                  <h3>{likes}</h3>
-                </div>
-              </div>
-            </div>
-            <div className="card card-info photodetailscommentcontainer  scrollbar">
-              <div>
-                <h6 className="card-block-fixed">{currentPost.comment}</h6>
-                <hr></hr>
-              </div>
-
-              {comments &&
-                comments.map((comment, index) => (
-                  <div>
-                    <div className="row">
-                      <div className="col-sm-1">
-                        <span
-                          onClick={() =>
-                            removeComment({ id: comment.commentId })
-                          }
-                        >
-                          <img src={xmark} style={{ height: "10px" }}></img>
-                        </span>
-                      </div>
-                      <div className="col-sm-11">
-                        <p>{comment.comment}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-            <div className="row">
-              <div className="pb-cmnt-container col-sm-10">
-                <div className="photodetailscommentcontainer">
-                  <div className="card card-info">
-                    <div className="card-block">
-                      <form onSubmit={handleSubmit}>
-                        <div>
-                          <input
-                            className="pb-cmnt-textarea"
-                            placeholder="Write your comment here!"
-                            type="text"
-                            name="comment"
-                            onChange={handleChange}
-                            required
-                          />
-                        </div>
-                        <button
-                          className="btn btn-outline-success my-2 my-sm-0"
-                          style={{ width: "100%" }}
-                          type="submit"
-                        >
-                          Comment
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pb-cmnt-container col-sm-2 likecontainer">
-                <span onClick={addLike}>
-                  <img
-                    src={LikeIcon}
-                    style={{ height: "60px", border: "0px" }}
-                  ></img>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default PhotoDetails;

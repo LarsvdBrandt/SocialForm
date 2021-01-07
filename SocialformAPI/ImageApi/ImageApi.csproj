@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="UploadImages\IMG_0530.jpg" />
-    <Content Include="UploadImages\IMG_0531.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="UploadImages\" />
   </ItemGroup>
 

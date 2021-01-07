@@ -79,21 +79,12 @@ const EditPost = (props) => {
 
     const formData = new FormData();
     formData.append("file", file); // appending file
+    formData.append("fileName", currentPost.imgSrc); // appending fileName
     axios
-      .post("http://localhost:4500/upload", formData, {
-        onUploadProgress: (ProgressEvent) => {
-          let progress =
-            Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100) +
-            "%";
-          setProgess(progress);
-        },
-      })
+      .post("http://localhost:5000/ImageApi/File", formData)
       .then((res) => {
-        console.log(res);
-        getFile({
-          name: res.data.name,
-          path: "http://localhost:4500" + res.data.path,
-        });
+        console.log("succes");
+
         history.push("/");
       })
       .catch((err) => console.log(err));

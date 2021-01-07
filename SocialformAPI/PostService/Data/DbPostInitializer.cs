@@ -21,25 +21,25 @@ namespace PostService.Data
                 new SFPost
                 {
                     Title="Gerwin Lips",
-                    ImgSrc="test1.jpg",
+                    ImgSrc="biken.jpg",
                     Comment="Mooie natuurfoto met waterval",
                 },
                 new SFPost
                 {
                     Title="Joost Bogie",
-                    ImgSrc="test2.jpg",
+                    ImgSrc="fallguys.jpg",
                     Comment="Vandaag een nieuwe gameboy gekocht",
                 },
                 new SFPost
                 {
                     Title="Ken Petit",
-                    ImgSrc="test3.jpg",
+                    ImgSrc="size1.jpg",
                     Comment="Mario eindelijk gekocht, van plan om hem meteen uit te spelen",
                 },
                 new SFPost
                 {
                     Title="Vincent Stolwijk",
-                    ImgSrc="test4.jpg",
+                    ImgSrc="game1.png",
                     Comment="Wie zou de verkiezing gaan winnen?",
                 },
             };
