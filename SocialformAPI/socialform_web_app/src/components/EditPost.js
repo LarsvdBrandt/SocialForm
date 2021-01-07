@@ -138,6 +138,7 @@ const EditPost = (props) => {
           </button>
 
           <button
+            data-testid="post-input-submit"
             type="submit"
             className="badge badge-success"
             onClick={updatePost}

@@ -16,7 +16,7 @@ import "@testing-library/jest-dom/extend-expect";
 jest.mock("../services/__services__/PostServiceMock");
 
 describe("Edit Post component tests", () => {
-  it.skip("Test if EditPost component renders", async () => {
+  it("Test if EditPost component renders", async () => {
     // expect.assertions(3);
 
     const mockFn = PostService.get.mockImplementation((data) => {
@@ -44,9 +44,9 @@ describe("Edit Post component tests", () => {
     fireEvent.change(inputTitle, { target: { value: "Lars van den Brandt" } });
     expect(inputTitle.value).toBe("Lars van den Brandt");
 
+    // const file = new File(["(⌐□_□)"], "chucknorris.png", { type: "image/png" });
     // const inputImage = screen.getByTestId("post-input-image");
-    // fireEvent.change(inputImage, { target: { value: MockImage } });
-    // expect(inputImage.value).toBe(MockImage);
+    // fireEvent.change(inputImage, { target: { files: file } });
 
     const inputComment = screen.getByTestId("post-input-comment");
     fireEvent.change(inputComment, { target: { value: "Mooie foto" } });
@@ -56,7 +56,7 @@ describe("Edit Post component tests", () => {
     // fireEvent.click(inputSubmit);
     // expect(mockFn).toHaveBeenCalledWith({
     //   comment: "Mooie foto",
-    //   imgSrc: "",
+    //   imgSrc: "chucknorris.png",
     //   title: "Lars van den Brandt",
     // });
   });

@@ -17,6 +17,8 @@ jest.mock("../services/__services__/PostServiceMock");
 
 describe("Photodetails component tests", () => {
   it("Test if photodetails component renders", async () => {
+    let useLocation;
+
     render(
       <MemoryRouter initialEntries={["/PhotoDetails/1"]}>
         <PhotoDetails state={{ id: 1 }} />
