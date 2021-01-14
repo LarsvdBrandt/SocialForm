@@ -28,4 +28,27 @@ describe("Photodetails component tests", () => {
     const header = await screen.findByText("Gerwin Lips");
     expect(header).toBeInTheDocument();
   });
+
+  it("Test if I can place a comment", async () => {
+    let useLocation;
+
+    render(
+      <MemoryRouter initialEntries={["/PhotoDetails/1"]}>
+        <PhotoDetails />
+      </MemoryRouter>
+    );
+
+    const header = await screen.findByText("Gerwin Lips");
+    expect(header).toBeInTheDocument();
+
+    const inputComment = screen.getByTestId("photo-input-comment");
+    fireEvent.change(inputComment, { target: { value: "super gaaf!" } });
+    expect(inputComment.value).toBe("super gaaf!");
+
+    const inputSubmit = screen.getByTestId("photo-input-submit");
+    fireEvent.click(inputSubmit);
+
+    const comment = await screen.findByText("super gaaf!");
+    expect(comment).toBeInTheDocument();
+  });
 });

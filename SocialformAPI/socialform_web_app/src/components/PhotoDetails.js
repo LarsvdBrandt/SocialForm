@@ -13,7 +13,8 @@ const PhotoDetails = (props) => {
   // const { state } = useLocation();
   const location = useLocation();
   let match = useRouteMatch("/PhotoDetails/:photoid");
-  let state = match.params.photoid;
+  let state = Number(match.params.photoid);
+
   const initialPostState = {
     id: null,
     title: "",
@@ -199,6 +200,7 @@ const PhotoDetails = (props) => {
                   <div className="row">
                     <div className="col-sm-1">
                       <span
+                        data-testid="deletecommentid"
                         onClick={() => removeComment({ id: comment.commentId })}
                       >
                         <img src={xmark} style={{ height: "10px" }}></img>
@@ -222,6 +224,7 @@ const PhotoDetails = (props) => {
                           className="pb-cmnt-textarea"
                           placeholder="Write your comment here!"
                           type="text"
+                          data-testid="photo-input-comment"
                           name="comment"
                           onChange={handleChange}
                           required
@@ -231,6 +234,7 @@ const PhotoDetails = (props) => {
                         className="btn btn-outline-success my-2 my-sm-0"
                         style={{ width: "100%" }}
                         type="submit"
+                        data-testid="photo-input-submit"
                       >
                         Comment
                       </button>

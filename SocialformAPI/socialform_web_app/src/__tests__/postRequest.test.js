@@ -25,20 +25,22 @@ describe("Post component tests", () => {
     fireEvent.change(inputTitle, { target: { value: "Lars van den Brandt" } });
     expect(inputTitle.value).toBe("Lars van den Brandt");
 
-    // const inputImage = screen.getByTestId("post-input-image");
-    // fireEvent.change(inputImage, { target: { value: MockImage } });
-    // expect(inputImage.value).toBe(MockImage);
+    const file = new File(["(⌐□_□)"], "chucknorris.png", { type: "image/png" });
+    const inputImage = screen.getByTestId("post-input-image");
+    fireEvent.change(inputImage, { target: { files: [file] } });
+    console.log(inputImage.files[0]);
+    expect(inputImage.files[0]).toBe(file);
 
     const inputComment = screen.getByTestId("post-input-comment");
     fireEvent.change(inputComment, { target: { value: "Mooie foto" } });
     expect(inputComment.value).toBe("Mooie foto");
 
-    // const inputSubmit = screen.getByTestId("post-input-submit");
-    // fireEvent.click(inputSubmit);
-    // expect(mockFn).toHaveBeenCalledWith({
-    //   comment: "Mooie foto",
-    //   imgSrc: "",
-    //   title: "Lars van den Brandt",
-    // });
+    const inputSubmit = screen.getByTestId("post-input-submit");
+    fireEvent.click(inputSubmit);
+    expect(mockFn).toHaveBeenCalledWith({
+      comment: "Mooie foto",
+      imgSrc: "chucknorris.png",
+      title: "Lars van den Brandt",
+    });
   });
 });

@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import PostService from "../services/PostService";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useLocation, useRouteMatch } from "react-router-dom";
 
 const EditPost = (props) => {
   const history = useHistory();
-  const { state } = useLocation();
+  // const { state } = useLocation();
+  let match = useRouteMatch("/EditPost/:photoid");
+  let state = Number(match.params.photoid);
   const initialPostState = {
     id: null,
     title: "",
@@ -27,8 +29,8 @@ const EditPost = (props) => {
   };
 
   useEffect(() => {
-    getPost(props.match.params.id);
-  }, [props.match.params.id]);
+    getPost();
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
